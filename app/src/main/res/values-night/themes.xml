@@ -1,0 +1,33 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.BodyBoost" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/Second</item>
+        <item name="colorPrimaryVariant">#AEC5EB</item>
+        <item name="colorOnPrimary">@color/Second</item>
+        <item name="android:iconTint">@color/white</item>
+        <item name="actionBarPopupTheme">@color/white</item>
+        <item name="android:text">@color/black</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/Lavender</item>
+        <item name="colorSecondaryVariant">@color/Lavender</item>
+        <item name="colorOnSecondary">@color/Second</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+    <style name="DialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_in</item>
+        <item name="android:windowExitAnimation">@anim/slide_out</item>
+    </style>
+    <style name="roundedImageViewRound">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+    <style name="NoActionBar">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+    <style name="Base.Theme.Spinner" parent="Theme.Material3.DayNight.NoActionBar"></style>
+    <style name="theme.spinner" parent="Base.Theme.Spinner" />
+</resources>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditFragment"
+    android:orientation="vertical"
+    android:layout_gravity="center_vertical"
+    android:background="@color/Lavender">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/baseline_arrow_back_ios_new_24"
+            android:drawableTint="@color/white" />
+        <TextView
+            android:id="@+id/nav_about"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:background="@color/Second"
+            android:padding="10dp"
+            android:text="關於"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            tools:ignore="TextContrastCheck" />
+
+    </FrameLayout>
+
+
+
+    <ImageView
+        android:layout_gravity="center"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        card_view:srcCompat="@drawable/logo" />
+
+    <LinearLayout
+        android:layout_width="322dp"
+        android:layout_height="460dp"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:id="@+id/version"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textAlignment="textStart"
+            android:layout_marginTop="50px"
+            android:background="@drawable/custom_edittext"
+            android:drawableLeft="@drawable/baseline_person_24"
+            android:hint="版本"
+            android:paddingTop="13dp"
+            android:textColor="@color/Second"
+            android:textColorHint="@color/Second" />
+
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/custom_edittext"
+            android:drawableLeft="@drawable/baseline_lock_24"
+            android:hint="聯絡信箱"
+            android:inputType="textPassword"
+            android:paddingTop="13dp"
+            android:textColor="@color/Second"
+            android:textColorHint="@color/Second" />
+
+        <TextView
+            android:id="@+id/website"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/custom_edittext"
+            android:drawableLeft="@drawable/baseline_lock_24"
+            android:hint="網站"
+            android:inputType="textPassword"
+            android:paddingTop="13dp"
+            android:textColor="@color/Second"
+            android:textColorHint="@color/Second" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="發行於BodyBoost"
+            android:textSize="10dp"
+            android:textColor="@color/white"
+            android:layout_marginTop="500px"
+            android:layout_gravity="center"/>
+
+
+    </LinearLayout>
+</LinearLayout>

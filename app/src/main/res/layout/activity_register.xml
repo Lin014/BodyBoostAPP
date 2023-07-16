@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity"
+    android:orientation="vertical"
+    android:layout_gravity="center_vertical"
+    android:background="@color/Lavender">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/loginText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:background="@color/Second"
+            android:padding="10dp"
+            android:text="註冊"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            tools:ignore="TextContrastCheck" />
+        <Button
+            android:id="@+id/back"
+            android:stateListAnimator="@null"
+            android:elevation="0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/baseline_arrow_back_ios_new_24"
+            android:drawableTint="@color/white" />
+    </FrameLayout>
+    <LinearLayout
+        android:layout_width="322dp"
+        android:layout_height="425dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/background"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:id="@+id/Text"
+            android:layout_width="138dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/rectangle"
+            android:padding="5dp"
+            android:text="帳號資訊"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/custom_edittext"
+            android:drawableLeft="@drawable/baseline_person_24"
+            android:drawablePadding="2dp"
+            android:hint="帳號"
+            android:padding="8dp"
+            android:textColor="@color/black"
+            android:text=""
+            android:textColorHint="@color/Second" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/custom_edittext"
+            android:drawableLeft="@drawable/baseline_lock_24"
+            android:drawablePadding="2dp"
+            android:hint="密碼"
+            android:text=""
+            android:inputType="textPassword"
+            android:padding="8dp"
+            android:textColor="@color/Second"
+            android:textColorHint="@color/Second" />
+
+        <EditText
+            android:id="@+id/check_password"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/custom_edittext"
+            android:drawableLeft="@drawable/baseline_lock_24"
+            android:drawablePadding="2dp"
+            android:hint="確認密碼"
+            android:text=""
+            android:inputType="textPassword"
+            android:padding="8dp"
+            android:textColor="@color/Second"
+            android:textColorHint="@color/Second" />
+
+        <EditText
+            android:id="@+id/mail"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/custom_edittext"
+            android:drawableLeft="@drawable/baseline_mail_24"
+            android:drawablePadding="2dp"
+            android:hint="電子郵件"
+            android:text=""
+            android:padding="8dp"
+            android:textColor="@color/Second"
+            android:textColorHint="@color/Second"
+            android:autofillHints="" />
+
+
+    </LinearLayout>
+    <Button
+        android:id="@+id/next"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="@color/Second"
+        android:text="下一步"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:cornerRadius="10dp" />
+
+</LinearLayout>
