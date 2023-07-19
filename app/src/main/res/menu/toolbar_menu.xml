@@ -12,5 +12,9 @@
     <item
         android:id="@+id/record"
         android:title="Record" />
+    <item
+        android:id="@+id/notification"
+        android:title="Notification"
+        android:icon="@drawable/baseline_notifications_24"/>
 
 </menu>

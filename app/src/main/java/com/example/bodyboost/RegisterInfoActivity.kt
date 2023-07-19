@@ -11,13 +11,11 @@ class RegisterInfoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register_info)
-        val finishButton = findViewById<View>(R.id.finish) as Button
-        finishButton.setOnClickListener {
+        val nextButton = findViewById<View>(R.id.next) as Button
+        nextButton.setOnClickListener {
             val intent = Intent()
-            intent.setClass(this@RegisterInfoActivity, MainActivity::class.java)
+            intent.setClass(this@RegisterInfoActivity, TargetActivity::class.java)
             startActivity(intent)
-            val toast = Toast.makeText(this@RegisterInfoActivity, "註冊成功", Toast.LENGTH_LONG)
-            toast.show()
         }
         val BackButton = findViewById<View>(R.id.back) as Button
         BackButton.setOnClickListener {
