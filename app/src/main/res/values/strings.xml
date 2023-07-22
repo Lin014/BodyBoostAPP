@@ -21,5 +21,7 @@
     <string name = "open">Open</string>
     <string name = "close">Close</string>
     <string name="back" />
+    <string name="weight">體重記錄</string>
+    <string name="calorie_consumption">消耗熱量</string>
 
 </resources>
