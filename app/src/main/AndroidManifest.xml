@@ -12,8 +12,11 @@
         android:theme="@style/Theme.BodyBoost"
         tools:targetApi="31">
         <activity
+            android:name=".UpgradeActivity"
+            android:exported="true" />
+        <activity
             android:name=".DetailedActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".WelcomeActivity"
             android:exported="true">

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center_vertical"
+    android:background="@color/Lavender">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="升級會員"
+        android:textSize="36dp"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:layout_margin="30dp"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="80dp">
+        <Button
+            android:id="@+id/month"
+            android:layout_width="400px"
+            android:layout_height="700px"
+            android:layout_gravity="left"
+            android:layout_marginLeft="30dp"
+            android:text="月繳"
+            android:textColor="@color/white"
+            android:background="@drawable/upgrade"/>
+
+        <Button
+            android:id="@+id/year"
+            android:layout_width="400px"
+            android:layout_height="700px"
+            android:layout_gravity="right"
+            android:layout_marginRight="30dp"
+            android:text="年繳"
+            android:textColor="@color/white"
+            android:background="@drawable/upgrade"/>
+
+
+    </FrameLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="300dp"
+        android:layout_gravity="center"
+        android:text="Skip"
+        android:textSize="20dp"/>
+
+</LinearLayout>
