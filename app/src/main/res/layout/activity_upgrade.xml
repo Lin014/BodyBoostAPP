@@ -17,35 +17,107 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="80dp">
-            <Button
-                android:id="@+id/month"
-                android:layout_width="450px"
-                android:layout_height="800px"
-                android:layout_gravity="left"
-                android:layout_marginLeft="20dp"
-                android:text="月繳"
-                android:textColor="@color/white"
-                android:background="@drawable/upgrade"/>
+        android:layout_marginTop="40dp">
 
-            <Button
-                android:id="@+id/year"
-                android:layout_width="450px"
-                android:layout_height="800px"
-                android:layout_gravity="right"
-                android:layout_marginRight="20dp"
-                android:text="年繳"
-                android:textColor="@color/white"
-                android:background="@drawable/upgrade"/>
+            <View
+                android:id="@+id/view"
+                android:layout_width="350dp"
+                android:layout_height="400dp"
+                android:layout_gravity="center"
+                android:background="@drawable/background" />
+
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginLeft="80dp"
+                android:src="@drawable/time"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="160dp"
+                android:layout_marginLeft="90dp"
+                android:textColor="@color/Second"
+                android:text="自訂運動時間"
+                android:paddingTop="5dp"/>
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginLeft="230dp"
+                android:src="@drawable/times" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="160dp"
+                android:layout_marginLeft="240dp"
+                android:textColor="@color/Second"
+                android:text="自訂運動次數"
+                android:paddingTop="5dp"/>
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="230dp"
+                android:src="@drawable/animation"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="330dp"
+                android:layout_marginLeft="90dp"
+                android:textColor="@color/Second"
+                android:text="自訂動畫角色"
+                android:paddingTop="5dp"/>
+
+
 
 
     </FrameLayout>
-    <TextView
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="30dp">
+
+        <Button
+            android:id="@+id/month"
+            android:layout_width="400px"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="30dp"
+            android:text="月繳"
+            android:textSize="24dp"
+            android:textColor="@color/white"
+            android:background="@drawable/upgrade"/>
+
+        <Button
+            android:id="@+id/year"
+            android:layout_width="400px"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginLeft="50dp"
+            android:text="年繳"
+            android:textSize="24dp"
+            android:textColor="@color/white"
+            android:background="@drawable/upgrade"/>
+
+    </LinearLayout>
+    <Button
+        android:id="@+id/skip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Skip"
-        android:textSize="20dp"/>
+        android:textColor="@color/white"
+        android:backgroundTint="@color/Lavender"
+        android:textSize="14dp"
+        android:layout_marginTop="10dp"
+        android:stateListAnimator="@null"/>
 
 </LinearLayout>

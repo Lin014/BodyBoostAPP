@@ -8,7 +8,7 @@
     tools:context=".EditFragment"
     android:orientation="vertical"
     android:layout_gravity="center_vertical"
-    android:background="@color/Lavender">
+    android:background="@color/white">
 
 
     <FrameLayout
@@ -36,69 +36,4 @@
 
     </FrameLayout>
 
-
-
-    <ImageView
-        android:layout_gravity="center"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        card_view:srcCompat="@drawable/logo" />
-
-    <LinearLayout
-        android:layout_width="322dp"
-        android:layout_height="460dp"
-        android:layout_gravity="center_horizontal"
-        android:orientation="vertical"
-        android:padding="24dp">
-
-        <TextView
-            android:id="@+id/version"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:textAlignment="textStart"
-            android:layout_marginTop="50px"
-            android:background="@drawable/custom_edittext"
-            android:drawableLeft="@drawable/baseline_person_24"
-            android:hint="版本"
-            android:paddingTop="13dp"
-            android:textColor="@color/Second"
-            android:textColorHint="@color/Second" />
-
-        <TextView
-            android:id="@+id/email"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/custom_edittext"
-            android:drawableLeft="@drawable/baseline_lock_24"
-            android:hint="聯絡信箱"
-            android:inputType="textPassword"
-            android:paddingTop="13dp"
-            android:textColor="@color/Second"
-            android:textColorHint="@color/Second" />
-
-        <TextView
-            android:id="@+id/website"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/custom_edittext"
-            android:drawableLeft="@drawable/baseline_lock_24"
-            android:hint="網站"
-            android:inputType="textPassword"
-            android:paddingTop="13dp"
-            android:textColor="@color/Second"
-            android:textColorHint="@color/Second" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="發行於BodyBoost"
-            android:textSize="10dp"
-            android:textColor="@color/white"
-            android:layout_marginTop="500px"
-            android:layout_gravity="center"/>
-
-
-    </LinearLayout>
 </LinearLayout>

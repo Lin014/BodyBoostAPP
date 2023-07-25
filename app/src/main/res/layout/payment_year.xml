@@ -43,61 +43,21 @@
             android:textSize="16dp"
             android:text="升級專屬功能："/>
 
-        <ImageView
-            android:id="@+id/imageView6"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="120dp"
-            android:layout_marginLeft="50dp"
-            app:srcCompat="@drawable/time" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="220dp"
-            android:layout_marginLeft="60dp"
-            android:textColor="@color/Second"
-            android:text="自訂運動時間"
-            android:paddingTop="5dp"/>
-        <ImageView
-            android:id="@+id/imageView7"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="120dp"
-            android:layout_marginLeft="200dp"
-            app:srcCompat="@drawable/times" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="220dp"
-            android:layout_marginLeft="210dp"
-            android:textColor="@color/Second"
-            android:text="自訂運動次數"
-            android:paddingTop="5dp"/>
+        <ListView
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"/>
 
-        <ImageView
-            android:id="@+id/imageView8"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="280dp"
-            app:srcCompat="@drawable/animation" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="380dp"
-            android:layout_marginLeft="58dp"
-            android:textColor="@color/Second"
-            android:text="自訂動畫角色"
-            android:paddingTop="5dp"/>
 
     </FrameLayout>
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
+        android:layout_margin="20dp"
         android:text="升級"
+        android:textSize="36dp"
         android:textColor="@color/white" />
 
 

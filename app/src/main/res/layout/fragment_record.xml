@@ -83,9 +83,6 @@
             android:layout_marginBottom="20dp"
             android:layout_marginTop="20dp"/>
 
-
-
-
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="wrap_content"

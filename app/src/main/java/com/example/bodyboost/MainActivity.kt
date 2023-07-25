@@ -22,7 +22,7 @@ import com.google.android.gms.auth.api.identity.SignInClient
 import com.google.android.gms.common.api.ApiException
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
-
+import android.net.Uri
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 //    private lateinit var oneTapClient: SignInClient
 //    private lateinit var signInRequest: BeginSignInRequest
@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var bottomNavigationView: BottomNavigationView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -52,6 +53,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 }
                 R.id.record -> {
                     replaceFragment(RecordFragment())
+                    true
+                }
+                R.id.achievement -> {
+                    replaceFragment(AchievementFragment())
                     true
                 }
                 else -> false
@@ -101,7 +106,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_meal_record -> replaceFragment(RecordFragment())
             R.id.nav_question -> replaceFragment(HomeFragment())
             R.id.nav_setting -> replaceFragment(SettingFragment())
-            R.id.nav_about -> replaceFragment(HomeFragment())
+            R.id.nav_about -> replaceFragment(AboutUs())
             R.id.nav_logout -> {
                 try {
                     Toast.makeText(this, "Logout", Toast.LENGTH_SHORT).show();

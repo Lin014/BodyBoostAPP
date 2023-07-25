@@ -69,14 +69,6 @@
             android:text="夜間模式"
             android:textColor="@color/white" />
         <Button
-            android:id="@+id/delete_account"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/custom_edittext"
-            android:text="刪除帳號"
-            android:textColor="@color/white" />
-        <Button
             android:id="@+id/select_character"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -84,5 +76,15 @@
             android:background="@drawable/custom_edittext"
             android:text="選擇動畫人物"
             android:textColor="@color/white" />
+        <Button
+            android:id="@+id/delete_account"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+
+            android:backgroundTint="@color/white"
+            android:text="刪除帳號"
+            android:textColor="@color/Second" />
+
     </LinearLayout>
 </LinearLayout>

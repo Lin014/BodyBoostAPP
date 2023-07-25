@@ -23,12 +23,12 @@ class ReportFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val rootView = inflater.inflate(R.layout.fragment_report, container, false)
+
+    val rootView = inflater.inflate(R.layout.fragment_report, container, false)
 
         weightChart = rootView.findViewById(R.id.lineChart_weight)
         calorieChart = rootView.findViewById(R.id.lineChart_calorie)

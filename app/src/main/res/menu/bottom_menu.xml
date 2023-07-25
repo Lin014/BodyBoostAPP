@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/home"
-        android:title="Home"
-        android:icon="@drawable/baseline_home_24" />
+
     <item
         android:id="@+id/sport"
         android:title="Sport"
@@ -13,8 +10,16 @@
         android:title="Report"
         android:icon="@drawable/baseline_bar_chart_24" />
     <item
+        android:id="@+id/home"
+        android:title="Home"
+        android:icon="@drawable/baseline_home_24" />
+    <item
         android:id="@+id/record"
         android:title="Record"
-        android:icon="@drawable/baseline_edit_note_24" />
+        android:icon="@drawable/meal" />
+    <item
+        android:id="@+id/achievement"
+        android:title="Achievement"
+        android:icon="@drawable/trophy_cup_silhouette" />
 
 </menu>

@@ -44,11 +44,17 @@
         android:layout_height="600dp"
         android:layout_gravity="center_horizontal"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:padding="10dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="電子信箱："/>
+            android:text="確認您的電子郵件並發送重置連結"
+            android:layout_gravity="center"
+            android:layout_marginBottom="50dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="電子信箱"/>
 
         <EditText
             android:id="@+id/dark_mode"
