@@ -23,5 +23,6 @@
     <string name="back" />
     <string name="weight">體重記錄</string>
     <string name="calorie_consumption">消耗熱量</string>
+    <string name="nutrient_content">營養成分</string>
 
 </resources>
