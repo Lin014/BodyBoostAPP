@@ -18,7 +18,7 @@ class TargetActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_target)
         target = findViewById(R.id.target)
-        val targetItems = listOf("維持健康","減重")
+        val targetItems = listOf("維持健康","減重","增肌減脂","其他")
         val arrayAdapter = ArrayAdapter(this,android.R.layout.simple_spinner_item,targetItems)
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line)
         target.adapter = arrayAdapter

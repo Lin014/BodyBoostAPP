@@ -21,7 +21,7 @@
             android:layout_marginBottom="40dp"
             android:background="@color/Yellow"
             android:padding="10dp"
-            android:text="註冊"
+            android:text="@string/register"
             android:textAlignment="center"
             android:textColor="@color/Second"
             android:textSize="24sp"
@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/Yellow"
             android:textColor="@color/Yellow"
-            android:drawableLeft="@drawable/baseline_arrow_back_ios_new_24"
+            android:drawableStart="@drawable/baseline_arrow_back_ios_new_24"
             android:drawableTint="@color/Second" />
     </FrameLayout>
 
@@ -55,7 +55,7 @@
             android:layout_marginBottom="40dp"
             android:background="@drawable/rectangle"
             android:padding="5dp"
-            android:text="個人資訊"
+            android:text="@string/personal_info"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="16sp"
@@ -66,12 +66,13 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/custom_edittext"
-            android:hint="  姓名"
+            android:hint="@string/username"
             android:inputType="text"
             android:text=""
             android:padding="8dp"
             android:textColor="@color/Second"
-            android:textColorHint="@color/Second" />
+            android:textColorHint="@color/Second"
+            android:autofillHints="" />
 
         <EditText
             android:id="@+id/password"
@@ -84,7 +85,9 @@
             android:inputType="text"
             android:padding="8dp"
             android:textColor="@color/Second"
-            android:textColorHint="@color/Second" />
+            android:textColorHint="@color/Second"
+            tools:ignore="TextFields"
+            android:autofillHints="" />
 
         <EditText
             android:id="@+id/check_password"
@@ -92,12 +95,14 @@
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/custom_edittext"
-            android:hint="  身高"
+            android:hint="@string/height"
             android:inputType="number"
             android:text=""
             android:padding="8dp"
             android:textColor="@color/Second"
-            android:textColorHint="@color/Second" />
+            android:textColorHint="@color/Second"
+            android:autofillHints=""
+            tools:ignore="TextFields" />
 
         <EditText
             android:id="@+id/mail"
@@ -110,7 +115,8 @@
             android:text=""
             android:padding="8dp"
             android:textColor="@color/Second"
-            android:textColorHint="@color/Second" />
+            android:textColorHint="@color/Second"
+            android:autofillHints="" />
 
 
         <EditText
@@ -124,7 +130,9 @@
             android:text="出生日期"
             android:inputType="date"
             android:padding="14dp"
-            android:textColor="@color/Second" />
+            android:textColor="@color/Second"
+            android:autofillHints=""
+            tools:ignore="RtlHardcoded" />
 
 
     </LinearLayout>
