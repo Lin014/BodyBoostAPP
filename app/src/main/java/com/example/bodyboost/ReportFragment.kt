@@ -16,9 +16,14 @@ import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
+import com.github.mikephil.charting.data.PieData
+import com.github.mikephil.charting.data.PieDataSet
+import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
+import com.github.mikephil.charting.formatter.PercentFormatter
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 class ReportFragment : Fragment() {
 
@@ -34,6 +39,13 @@ class ReportFragment : Fragment() {
     private val weightList = mutableListOf<Float>()
     // weight chart use data
     private val weightChartMaxAndMinList = mutableListOf<Float>()
+
+    // calories data list
+    private val caloriesList = mutableListOf<Int>()
+    private val dateList2 = mutableListOf<String>()
+
+    // nutrient data list
+    private  val nutrientList = mutableListOf<PieEntry>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,6 +69,7 @@ class ReportFragment : Fragment() {
 
         weightChartInit()
         caloriesChartInit()
+        nutrientChartInit()
 
         addWeightButton.setOnClickListener {
             inputWeight()
@@ -191,16 +204,24 @@ class ReportFragment : Fragment() {
 
     private fun caloriesChartInit() {
         // init calories chart
-        caloriesChart.apply {
-            description.isEnabled = false
-            axisRight.isEnabled = false
-            setNoDataText("目前尚無資料")
-            setNoDataTextColor(Color.BLACK)
-            setDrawGridBackground(false)
-            setDrawBorders(false)
-            invalidate()
+        caloriesChart.description.isEnabled = false
+        caloriesChart.axisRight.isEnabled = false
+        caloriesChart.setNoDataText("目前尚無資料")
+        caloriesChart.setNoDataTextColor(Color.BLACK)
+        caloriesChart.setDrawGridBackground(false)
+        caloriesChart.setDrawBorders(false)
+        caloriesChart.invalidate()
+        // set weightChartMaxAndMinList
+        for (i in 0..600 step 4) {
+            weightChartMaxAndMinList.add(i.toFloat())
+        }
+        // updateData
+        if (dateList.isNotEmpty()) {
+            setWeightChart(findWeightChartMaxValue(weightList.max()), findWeightChartMinValue(weightList.min()))
         }
     }
+
+    private fun setCaloriesChart() {}
 
     private fun nutrientChartInit() {
         nutrientChart.apply {
@@ -209,6 +230,52 @@ class ReportFragment : Fragment() {
             setNoDataTextColor(Color.BLACK)
             invalidate()
         }
+//        //testData
+//        carb * 4 = c //碳水化合物熱量
+//        protein * 4 = p //蛋白質熱量
+//        fat * 9 = f //脂肪熱量
+//        calorie - c - p - f = e //其他熱量
+        nutrientList.add(PieEntry(50f, "碳水化合物"))
+        nutrientList.add(PieEntry(20f, "蛋白質"))
+        nutrientList.add(PieEntry(20f, "脂肪"))
+        nutrientList.add(PieEntry(10f, "其他"))
+        // updateData
+//        if (nutrientList.isNotEmpty()) {
+            setNutrientChart()
+//        }
+    }
+
+    private fun setNutrientChart() {
+        // set nutrient
+        // color
+        val pieColors = ArrayList<Int>()
+        pieColors.add(0xFFE39D8F.toInt())
+        pieColors.add(0xFFF0A697.toInt())
+        pieColors.add(0xFFFFC6BA.toInt())
+        pieColors.add(0xFFE38A78.toInt())
+        // set PieDataSet
+        val pieDataSet = PieDataSet(nutrientList, "營養成分比例")
+        pieDataSet.colors = pieColors
+        pieDataSet.valueTextSize = 10f
+        // set PieData
+        val pieData = PieData(pieDataSet).apply {
+            setDrawValues(true)
+            setValueFormatter(PercentFormatter(nutrientChart))
+            setValueTextColor(Color.BLACK)
+        }
+        // set attributes
+        nutrientChart.apply {
+            setUsePercentValues(true)
+            setEntryLabelColor(Color.BLACK)
+            setHoleColor(Color.TRANSPARENT)
+            isDrawHoleEnabled = true
+            holeRadius = 50f
+            setDrawCenterText(false)
+        }
+
+        // update data
+        nutrientChart.data = pieData
+        nutrientChart.invalidate()
     }
 }
 
