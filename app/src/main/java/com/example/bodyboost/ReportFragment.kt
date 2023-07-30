@@ -191,7 +191,6 @@ class ReportFragment : Fragment() {
                 weightList.add(weight)
                 // update weightChart
                 setWeightChart(findWeightChartMaxValue(weightList.max()), findWeightChartMinValue(weightList.min()))
-
                 // api write here
                 // update date and weight data: profile and WeightHistory
             },
@@ -213,7 +212,7 @@ class ReportFragment : Fragment() {
         caloriesChart.setDrawBorders(false)
         caloriesChart.invalidate()
         // set weightChartMaxAndMinList
-        for (i in 0..600 step 4) {
+        for (i in 0..10000 step 4) {
             caloriesChartMaxAndMinList.add(i.toFloat())
         }
         // updateData
@@ -224,7 +223,7 @@ class ReportFragment : Fragment() {
 
     private fun findCaloriesChartMaxValue(caloriesListMaxValue: Float): Float {
         var max = 0f
-        for (value in weightChartMaxAndMinList) {
+        for (value in caloriesChartMaxAndMinList) {
             if (value > caloriesListMaxValue) {
                 max = value.toFloat()
                 break
@@ -235,7 +234,7 @@ class ReportFragment : Fragment() {
 
     private fun findCaloriesChartMinValue(caloriesListMinValue: Float): Float {
         var min = 0f
-        for (value in weightChartMaxAndMinList.reversed()) {
+        for (value in caloriesChartMaxAndMinList.reversed()) {
             if (value < caloriesListMinValue) {
                 min = value.toFloat()
                 break
@@ -248,15 +247,15 @@ class ReportFragment : Fragment() {
         // set X
         caloriesChart.xAxis.apply {
             position = XAxis.XAxisPosition.BOTTOM
-            valueFormatter = IndexAxisValueFormatter(dateList)
-            labelCount = dateList.size
+            valueFormatter = IndexAxisValueFormatter(dateList2)
+            labelCount = dateList2.size
             granularity = 1f
             setDrawGridLines(false)
         }
         // set Y
         caloriesChart.axisLeft.apply {
-            axisMaximum = yMax // weight max value
-            axisMinimum = yMin // weight min value
+            axisMaximum = yMax // max value
+            axisMinimum = yMin // min value
             labelCount = 5
         }
         // add Y data
@@ -276,7 +275,7 @@ class ReportFragment : Fragment() {
 
         val lineData = LineData(lineDataSet)
 
-        // update weightChart data
+        // update caloriesChart data
         caloriesChart.data = lineData
         caloriesChart.setVisibleXRangeMaximum(4f)
         caloriesChart.invalidate()
@@ -296,10 +295,10 @@ class ReportFragment : Fragment() {
 //        protein * 4 = p //蛋白質熱量
 //        fat * 9 = f //脂肪熱量
 //        calorie - c - p - f = e //其他熱量
-        nutrientList.add(PieEntry(48.6f, "碳水化合物"))
-        nutrientList.add(PieEntry(19.8f, "蛋白質"))
-        nutrientList.add(PieEntry(20.3f, "脂肪"))
-        nutrientList.add(PieEntry(11.3f, "其他"))
+        nutrientList.add(PieEntry(50.6f, "碳水化合物"))
+        nutrientList.add(PieEntry(23.8f, "蛋白質"))
+        nutrientList.add(PieEntry(18.3f, "脂肪"))
+        nutrientList.add(PieEntry(7.3f, "其他"))
         // updateData
 //        if (nutrientList.isNotEmpty()) {
             setNutrientChart()
