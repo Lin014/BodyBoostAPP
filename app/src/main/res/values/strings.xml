@@ -24,6 +24,6 @@
     <string name="weight_input">輸入體重</string>
     <string name="weight_record">體重記錄</string>
     <string name="calorie_consumption">消耗熱量</string>
-    <string name="nutrient_content">營養成分</string>
+    <string name="nutrient_content">營養成分比例</string>
 
 </resources>

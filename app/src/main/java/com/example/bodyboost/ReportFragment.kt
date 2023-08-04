@@ -35,18 +35,20 @@ class ReportFragment : Fragment() {
     private lateinit var addWeightButton: Button
 
     // date and weight data list
-    private val dateList = mutableListOf<String>()
+    private val weightRecordDate = mutableListOf<String>()
     private val weightList = mutableListOf<Float>()
     // weight chart use data
     private val weightChartMaxAndMinList = mutableListOf<Float>()
 
     // calories data list
     private val caloriesList = mutableListOf<Float>()
-    private val dateList2 = mutableListOf<String>()
+    private val caloriesRecordDate = mutableListOf<String>()
     private val caloriesChartMaxAndMinList = mutableListOf<Float>()
 
     // nutrient data list
-    private  val nutrientList = mutableListOf<PieEntry>()
+    private val nutrientList = mutableListOf<Float>()
+    private val nutrientLabel = mutableListOf<String>()
+    private val nutrientRecordDate = mutableListOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,7 +65,7 @@ class ReportFragment : Fragment() {
         caloriesChart = rootView.findViewById(R.id.lineChart_calorie)
         nutrientChart = rootView.findViewById(R.id.pieChart_nutrient)
         editTextWeight = rootView.findViewById(R.id.editText_weight)
-        addWeightButton = rootView.findViewById(R.id.button1)
+        addWeightButton = rootView.findViewById(R.id.button_weightRecord)
 
         // api write here
         // get dateList and weightList data: WeightHistory
@@ -94,7 +96,7 @@ class ReportFragment : Fragment() {
             weightChartMaxAndMinList.add(i.toFloat())
         }
         // updateData
-        if (dateList.isNotEmpty()) {
+        if (weightRecordDate.isNotEmpty()) {
             setWeightChart(findWeightChartMaxValue(weightList.max()), findWeightChartMinValue(weightList.min()))
         }
     }
@@ -125,8 +127,8 @@ class ReportFragment : Fragment() {
         // set X
         weightChart.xAxis.apply {
             position = XAxis.XAxisPosition.BOTTOM
-            valueFormatter = IndexAxisValueFormatter(dateList)
-            labelCount = dateList.size
+            valueFormatter = IndexAxisValueFormatter(weightRecordDate)
+            labelCount = weightRecordDate.size
             granularity = 1f
             setDrawGridLines(false)
         }
@@ -187,7 +189,7 @@ class ReportFragment : Fragment() {
                 // add new date and weight data to weight list
                 // get month and day
                 val dateResult = selectedDateFormatted.substring(5)
-                dateList.add(dateResult)
+                weightRecordDate.add(dateResult)
                 weightList.add(weight)
                 // update weightChart
                 setWeightChart(findWeightChartMaxValue(weightList.max()), findWeightChartMinValue(weightList.min()))
@@ -216,7 +218,7 @@ class ReportFragment : Fragment() {
             caloriesChartMaxAndMinList.add(i.toFloat())
         }
         // updateData
-        if (dateList2.isNotEmpty()) {
+        if (caloriesRecordDate.isNotEmpty()) {
             setCaloriesChart(findCaloriesChartMaxValue(caloriesList.max()), findCaloriesChartMinValue(caloriesList.min()))
         }
     }
@@ -247,8 +249,8 @@ class ReportFragment : Fragment() {
         // set X
         caloriesChart.xAxis.apply {
             position = XAxis.XAxisPosition.BOTTOM
-            valueFormatter = IndexAxisValueFormatter(dateList2)
-            labelCount = dateList2.size
+            valueFormatter = IndexAxisValueFormatter(caloriesRecordDate)
+            labelCount = caloriesRecordDate.size
             granularity = 1f
             setDrawGridLines(false)
         }
@@ -290,31 +292,35 @@ class ReportFragment : Fragment() {
             setDrawEntryLabels(false)
             invalidate()
         }
-//        //testData
-//        carb * 4 = c //碳水化合物熱量
-//        protein * 4 = p //蛋白質熱量
-//        fat * 9 = f //脂肪熱量
-//        calorie - c - p - f = e //其他熱量
-        nutrientList.add(PieEntry(50.6f, "碳水化合物"))
-        nutrientList.add(PieEntry(23.8f, "蛋白質"))
-        nutrientList.add(PieEntry(18.3f, "脂肪"))
-        nutrientList.add(PieEntry(7.3f, "其他"))
+        // label list
+        nutrientLabel.add("碳水化合物")
+        nutrientLabel.add("蛋白質")
+        nutrientLabel.add("脂肪")
+        nutrientLabel.add("其他")
         // updateData
-//        if (nutrientList.isNotEmpty()) {
+        if (nutrientList.isNotEmpty()) {
             setNutrientChart()
-//        }
+        }
     }
 
     private fun setNutrientChart() {
         // set nutrient
-        // color
-        val pieColors = ArrayList<Int>()
+        // set color
+        val pieColors = java.util.ArrayList<Int>()
         pieColors.add(0xFFFF9E9E.toInt())
         pieColors.add(0xFFFFBE9E.toInt())
         pieColors.add(0xFFFFDB9E.toInt())
         pieColors.add(0xFF9EBBFF.toInt())
-        // set PieDataSet
-        val pieDataSet = PieDataSet(nutrientList, "營養成分比例")
+        // add data
+        val nList = mutableListOf<PieEntry>()
+        var index = 0
+        for (nutrient in nutrientList) {
+            var label = nutrientLabel[index]
+            nList.add(PieEntry(nutrient, label))
+            index += 1
+        }
+        // PieDataSet
+        val pieDataSet = PieDataSet(nList, "")
         pieDataSet.colors = pieColors
         pieDataSet.valueTextSize = 11f
         // set PieData
