@@ -6,6 +6,7 @@ import android.provider.ContactsContract
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.auth.api.identity.BeginSignInRequest
 
 
 class LoginActivity : AppCompatActivity() {
@@ -39,7 +40,7 @@ class LoginActivity : AppCompatActivity() {
         }
         googleBtn = findViewById(R.id.loginButton)
 
-//        oneTapClient = Identity.getSignInClient(this)
+//        oneTapClient = ContactsContract.CommonDataKinds.Identity.getSignInClient(this)
 //        signInRequest = BeginSignInRequest.builder()
 //            .setPasswordRequestOptions(BeginSignInRequest.PasswordRequestOptions.builder()
 //                .setSupported(true)
