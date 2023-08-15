@@ -1,16 +1,12 @@
 package com.example.bodyboost
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.view.ViewParent
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Button
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import java.text.FieldPosition
 
 class TargetActivity : AppCompatActivity(){
     private lateinit var target:Spinner
@@ -26,20 +22,11 @@ class TargetActivity : AppCompatActivity(){
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                 val selectedItem = parent.getItemAtPosition(position).toString()
                 Toast.makeText(this@TargetActivity,"$selectedItem", Toast.LENGTH_SHORT)
-
             }
-
             override fun onNothingSelected(p0: AdapterView<*>?) {
             }
         }
-        val finishButton = findViewById<View>(R.id.finish) as Button
-        finishButton.setOnClickListener {
-            val intent = Intent()
-            intent.setClass(this@TargetActivity, MainActivity::class.java)
-            startActivity(intent)
-            val toast = Toast.makeText(this@TargetActivity, "註冊成功", Toast.LENGTH_LONG)
-            toast.show()
-        }
+
 //        val BackButton = findViewById<View>(R.id.back) as Button
 //        BackButton.setOnClickListener {
 //            val intent = Intent(this@RegisterInfoActivity,RegisterActivity::class.java)

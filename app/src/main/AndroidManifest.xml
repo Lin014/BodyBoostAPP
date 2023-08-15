@@ -23,6 +23,30 @@
         android:theme="@style/Theme.BodyBoost"
         tools:targetApi="31">
         <activity
+            android:name=".VerificationCode"
+            android:exported="true" />
+        <activity
+            android:name=".TargetInfo4"
+            android:exported="true" />
+        <activity
+            android:name=".TargetInfo3"
+            android:exported="true" />
+        <activity
+            android:name=".TargetInfo2"
+            android:exported="true" />
+        <activity
+            android:name=".TargetInfo1"
+            android:exported="true" />
+        <activity
+            android:name=".Guide3"
+            android:exported="true" />
+        <activity
+            android:name=".Guide2"
+            android:exported="true" />
+        <activity
+            android:name=".Guide1"
+            android:exported="true" />
+        <activity
             android:name=".UpgradeActivity"
             android:exported="true" />
         <activity
