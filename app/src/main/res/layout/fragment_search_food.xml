@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginBottom="55dp"
+    android:orientation="vertical"
+    tools:context=".SearchFoodFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView"
+            android:layout_width="360dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:autofillHints="auto"
+            android:background="@drawable/custom_edittext"
+            android:backgroundTint="@color/Yellow"
+            android:hint="@string/search"
+            android:textColor="@color/TextColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button_custom"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginVertical="10dp"
+            android:layout_marginHorizontal="25dp"
+            android:background="@drawable/button"
+            android:text="自訂類別"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/searchView" />
+
+        <ImageButton
+            android:id="@+id/button2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginVertical="20dp"
+            android:background="@drawable/image_button_round"
+            android:scaleType="fitXY"
+            android:src="@drawable/img_grains"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_custom"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="五榖澱粉類"
+            android:textAlignment="center"
+            android:textColor="@color/TextColor"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@id/button2"
+            app:layout_constraintTop_toBottomOf="@+id/button2"
+            app:layout_constraintStart_toStartOf="@id/button2" />
+
+        <ImageButton
+            android:id="@+id/button3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginVertical="20dp"
+            android:background="@drawable/image_button_round"
+            android:scaleType="fitXY"
+            android:src="@drawable/img_egg_"
+            app:layout_constraintStart_toStartOf="@id/button2"
+            app:layout_constraintEnd_toEndOf="@id/button4"
+            app:layout_constraintTop_toBottomOf="@+id/button_custom"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="蛋肉魚類"
+            android:textAlignment="center"
+            android:textColor="@color/TextColor"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@id/button3"
+            app:layout_constraintTop_toBottomOf="@+id/button3"
+            app:layout_constraintStart_toStartOf="@id/button3" />
+
+        <ImageButton
+            android:id="@+id/button4"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginVertical="20dp"
+            android:background="@drawable/image_button_round"
+            android:scaleType="fitXY"
+            android:src="@drawable/img_vegetables"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_custom"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="蔬菜類"
+            android:textAlignment="center"
+            android:textColor="@color/TextColor"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@id/button4"
+            app:layout_constraintStart_toStartOf="@id/button4"
+            app:layout_constraintTop_toBottomOf="@+id/button4" />
+
+        <ImageButton
+            android:id="@+id/button5"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/image_button_round"
+            android:scaleType="fitXY"
+            android:src="@drawable/img_fruits"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button2"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="水果類"
+            android:textAlignment="center"
+            android:textColor="@color/TextColor"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@id/button5"
+            app:layout_constraintTop_toBottomOf="@+id/button5"
+            app:layout_constraintStart_toStartOf="@id/button5" />
+
+        <ImageButton
+            android:id="@+id/button6"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/image_button_round"
+            android:scaleType="fitXY"
+            android:src="@drawable/img_dairy_products"
+            app:layout_constraintStart_toStartOf="@id/button5"
+            app:layout_constraintEnd_toEndOf="@id/button7"
+            app:layout_constraintTop_toBottomOf="@+id/button3"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="乳品類"
+            android:textAlignment="center"
+            android:textColor="@color/TextColor"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@id/button6"
+            app:layout_constraintTop_toBottomOf="@+id/button6"
+            app:layout_constraintStart_toStartOf="@id/button6" />
+
+        <ImageButton
+            android:id="@+id/button7"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/image_button_round"
+            android:scaleType="fitXY"
+            android:src="@drawable/img_beans"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button4"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="豆類"
+            android:textAlignment="center"
+            android:textColor="@color/TextColor"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@id/button7"
+            app:layout_constraintStart_toStartOf="@id/button7"
+            app:layout_constraintTop_toBottomOf="@+id/button7" />
+
+        <ImageButton
+            android:id="@+id/button8"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/image_button_round"
+            android:scaleType="fitXY"
+            android:src="@drawable/img_beverages"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button5"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="飲料類"
+            android:textAlignment="center"
+            android:textColor="@color/TextColor"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@id/button8"
+            app:layout_constraintTop_toBottomOf="@+id/button8"
+            app:layout_constraintStart_toStartOf="@id/button8" />
+
+        <ImageButton
+            android:id="@+id/button9"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/image_button_round"
+            android:scaleType="fitXY"
+            android:src="@drawable/img_alcohol"
+            app:layout_constraintStart_toStartOf="@id/button8"
+            app:layout_constraintEnd_toEndOf="@id/button10"
+            app:layout_constraintTop_toBottomOf="@+id/button6"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="酒類"
+            android:textAlignment="center"
+            android:textColor="@color/TextColor"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@id/button9"
+            app:layout_constraintTop_toBottomOf="@+id/button9"
+            app:layout_constraintStart_toStartOf="@id/button9" />
+
+        <ImageButton
+            android:id="@+id/button10"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/image_button_round"
+            android:scaleType="fitXY"
+            android:src="@drawable/img_oil_nuts"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button7"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="油脂與堅果類"
+            android:textAlignment="center"
+            android:textColor="@color/TextColor"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@id/button10"
+            app:layout_constraintStart_toStartOf="@id/button10"
+            app:layout_constraintTop_toBottomOf="@+id/button10" />
+
+        <ImageButton
+            android:id="@+id/button11"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/image_button_round"
+            android:scaleType="fitXY"
+            android:src="@drawable/img_snacks"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button8"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="零食點心"
+            android:textAlignment="center"
+            android:textColor="@color/TextColor"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@id/button11"
+            app:layout_constraintTop_toBottomOf="@+id/button11"
+            app:layout_constraintStart_toStartOf="@id/button11" />
+
+        <ImageButton
+            android:id="@+id/button12"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/image_button_round"
+            android:scaleType="fitXY"
+            android:src="@drawable/img_fast_food"
+            app:layout_constraintStart_toStartOf="@id/button11"
+            app:layout_constraintEnd_toEndOf="@id/button13"
+            app:layout_constraintTop_toBottomOf="@+id/button9"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="速食類"
+            android:textAlignment="center"
+            android:textColor="@color/TextColor"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@id/button12"
+            app:layout_constraintTop_toBottomOf="@+id/button12"
+            app:layout_constraintStart_toStartOf="@id/button12" />
+
+        <ImageButton
+            android:id="@+id/button13"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/image_button_round"
+            android:scaleType="fitXY"
+            android:src="@drawable/img_condiment"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button10"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="調味品"
+            android:textAlignment="center"
+            android:textColor="@color/TextColor"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@id/button13"
+            app:layout_constraintStart_toStartOf="@id/button13"
+            app:layout_constraintTop_toBottomOf="@+id/button13" />
+
+        <ImageButton
+            android:id="@+id/button14"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/image_button_round"
+            android:scaleType="fitXY"
+            android:src="@drawable/img_dish"
+            app:layout_constraintEnd_toEndOf="@+id/button12"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button11"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="菜餚類"
+            android:textAlignment="center"
+            android:textColor="@color/TextColor"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/button14"
+            app:layout_constraintTop_toBottomOf="@+id/button14"
+            app:layout_constraintStart_toStartOf="@id/button14" />
+
+        <ImageButton
+            android:id="@+id/button15"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/image_button_round"
+            android:scaleType="fitXY"
+            android:src="@drawable/img_others"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/button12"
+            app:layout_constraintTop_toBottomOf="@+id/button13"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="其他類別"
+            android:textAlignment="center"
+            android:textColor="@color/TextColor"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@id/button15"
+            app:layout_constraintStart_toStartOf="@id/button15"
+            app:layout_constraintTop_toBottomOf="@+id/button15" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
