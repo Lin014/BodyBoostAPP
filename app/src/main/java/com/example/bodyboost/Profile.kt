@@ -2,7 +2,6 @@ package com.example.bodyboost
 
 data class Profile(
     val id: Int,
-    val userID: Int, // 關聯到 User 資料表中的 id 欄位
     val name: String,
     val gender: Int,
     val birthday: String,
@@ -12,4 +11,5 @@ data class Profile(
     val image:String,
     val goal:String,
     val body_fat:Number,
+    val user: Int // 關聯到 User 資料表中的 id 欄位
 )

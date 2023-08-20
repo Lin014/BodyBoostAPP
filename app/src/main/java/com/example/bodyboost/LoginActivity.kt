@@ -12,7 +12,6 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 class LoginActivity : AppCompatActivity() {
-    private var users: Users? = null
     private var progressDialog: ProgressDialog? = null
     private val retrofitAPI = RetrofitManager.getInstance()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,7 +48,6 @@ class LoginActivity : AppCompatActivity() {
     private fun loginNormal(account: String, password: String) {
         loadProgressDialog()
         val loginData = RetrofitAPI.LoginData(account, password)
-
         val call: Call<Users> = retrofitAPI.loginNormal(loginData)
         call.enqueue(object : Callback<Users> {
             override fun onResponse(call: Call<Users>, response: Response<Users>) {
@@ -72,7 +70,7 @@ class LoginActivity : AppCompatActivity() {
             if (users != null) {
                 when (response.code()) {
                     200 -> {
-                        this@LoginActivity.users = users
+                        UserSingleton.user = users
                         toast.setText("登入成功")
                         navigateToMainActivity()
                     }
@@ -83,7 +81,7 @@ class LoginActivity : AppCompatActivity() {
                 toast.setText("伺服器返回的數據為空")
             }
         } else {
-            toast.setText("請求失敗：QQ" + response.message())
+            toast.setText("帳號或密碼錯誤" + response.message())
         }
         dismissProgressDialogAndShowToast(toast)
     }

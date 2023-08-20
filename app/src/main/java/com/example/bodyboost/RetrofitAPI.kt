@@ -28,7 +28,8 @@ interface RetrofitAPI {
         val userID: Int
     )
     @POST("api/authentication/resendRegisterMail/")
-    fun resentRegisterMail(@Body account:String): Call<String>
+    fun resendVerificationMail(@Body account:String): Call<Void>
+
     @POST("api/authentication/sendForgetPasswordMail/")
     fun forgetPwdMail(@Body account:String): Call<String>
 
@@ -46,7 +47,7 @@ interface RetrofitAPI {
     )
     @DELETE("api/users/delete/{id}/")
     fun deleteUser(
-        @Path("id") id:String
+        @Path("id") id:Int
     ):Call<Users>
 
     @POST("api/users/login/google/")
@@ -62,12 +63,12 @@ interface RetrofitAPI {
     )
     @PUT("api/users/update/email/{id}/")
     fun updateEmail(
-        @Path("id") id:String,
+        @Path("id") id:Int,
         @Body email:Users
     ):Call<Void>
     @PUT("api/users/update/password/{id}/")
     fun updatePwd(
-        @Path("id") id:String,
+        @Path("id") id:Int,
         @Body password:Users
     ):Call<Void>
 
@@ -82,14 +83,39 @@ interface RetrofitAPI {
     data class ProfileData(
         val name: String,
         val gender: Int,
+        val birthday: String,
         val height: Double,
         val weight: Double,
-        val birthday: String,
         val userID: Int
     )
+    //------------------------DailyBonus------------------------------
+    @POST("api/dailybonus/add/{id}/")
+    fun addDailyBonus(@Path("id") userId: Int, @Body dailyBonusData: DailyBonusData): Call<DailyBonus>
+    data class DailyBonusData(
+        val id: Int,
+        val date: String,
+        val user_id: Int
+    )
+
+    @GET("api/dailybonus/{id}/")
+    fun searchdailybonus(
+        @Path("id") id: Int
+    ): Call<DailyBonus>
 
 
-
+    //------------------------Setting------------------------------
+    @PUT("api/setting/update/{id}")
+    fun UpdateSetting(
+        @Path("id") id: Int,
+        @Body settingData: SettingData
+    ): Call<Void>
+    data class SettingData(
+        val theme: String,
+        val anim_char_name: String,
+        val is_alerted: Boolean,
+        val alert_day: String,
+        val alert_time: String
+    )
 
 }
 

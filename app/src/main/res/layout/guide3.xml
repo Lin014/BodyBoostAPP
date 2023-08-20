@@ -25,7 +25,8 @@
         android:layout_marginTop="200dp"/>
 </FrameLayout>
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
+        android:layout_gravity="center"
         android:layout_height="wrap_content"
         android:text="人體脂肪率男性15-25%為正常範圍，女性20-30%為正常範圍，體脂率過多或過少都對身體有害"
         android:textSize="20dp"

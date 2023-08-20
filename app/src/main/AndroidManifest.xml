@@ -3,6 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools">
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <!-- 添加 One Tap API 配置 -->
     <meta-data
         android:name="com.google.android.gms.identity.api.AuthzenApiKey"
@@ -47,7 +54,7 @@
             android:name=".Guide1"
             android:exported="true" />
         <activity
-            android:name=".UpgradeActivity"
+            android:name=".UpgradeFragment"
             android:exported="true" />
         <activity
             android:name=".DetailedActivity"

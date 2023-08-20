@@ -1,14 +1,9 @@
 package com.example.bodyboost
-import android.app.Activity
 import android.app.AlertDialog
-import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -16,19 +11,14 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
-import com.google.android.gms.auth.api.identity.BeginSignInRequest
-import com.google.android.gms.auth.api.identity.Identity
-import com.google.android.gms.auth.api.identity.SignInClient
-import com.google.android.gms.common.api.ApiException
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
-import android.net.Uri
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 //    private lateinit var oneTapClient: SignInClient
 //    private lateinit var signInRequest: BeginSignInRequest
 //    private val REQ_ONE_TAP = 2  // Can be any integer unique to the Activity
 //    private var showOneTapUI = true
-
+    val currentUser = UserSingleton.user
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var bottomNavigationView: BottomNavigationView
 
@@ -59,6 +49,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     replaceFragment(AchievementFragment())
                     true
                 }
+                R.id.notification -> {
+                    replaceFragment(NotificationFragment())
+                    true
+                }
+                R.id.upgrade -> {
+                    replaceFragment(UpgradeFragment())
+                    true
+                }
                 else -> false
             }
         }
@@ -80,7 +78,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             replaceFragment(HomeFragment())
             navigationView.setCheckedItem(R.id.nav_home)
         }
-
 //        oneTapClient = Identity.getSignInClient(this)
 //        signInRequest = BeginSignInRequest.builder()
 //            .setPasswordRequestOptions(BeginSignInRequest.PasswordRequestOptions.builder()
@@ -148,6 +145,26 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.toolbar_menu, menu)
         return true
+    }
+    private fun showNotificationDialog() {
+        val account = currentUser?.account
+        if (account != null) {
+//            showAlertDialog(
+//                title = "通知提醒",
+//                message = "是否要打開手機提醒?",
+//                positiveButtonText = "開啟",
+//                positiveButtonAction = {
+//
+//                },
+//                negativeButtonText = "取消"
+//            )
+        } else {
+            // 處理 currentUser 為空的情況
+            showToast("無法獲取帳號資訊")
+        }
+    }
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
 //    //GOOGLE 登入

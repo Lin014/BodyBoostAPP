@@ -15,21 +15,27 @@ import androidx.appcompat.app.AppCompatActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Locale
 
 
 class RegisterInfoActivity : AppCompatActivity() {
-    private var profile: Profile? = null
-    private var enterBirthday: TextView? = null
-    private var progressDialog: ProgressDialog? = null
-    private var calendar: Calendar = Calendar.getInstance()
+    private lateinit var profile: Profile
+    private lateinit var enterBirthday: TextView
+    private lateinit var progressDialog: ProgressDialog
+    private val calendar: Calendar = Calendar.getInstance()
     private val retrofitAPI = RetrofitManager.getInstance()
     private val currentUser = UserSingleton.user
+    private val genderInt = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register_info)
 
         enterBirthday = findViewById(R.id.birthday)
+        progressDialog = ProgressDialog(this)
+
         val genderSpinner = findViewById<Spinner>(R.id.gender)
         val genderOptions = arrayOf("男", "女")
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, genderOptions)
@@ -38,23 +44,23 @@ class RegisterInfoActivity : AppCompatActivity() {
 
         val nextButton = findViewById<Button>(R.id.nextpage)
         nextButton.setOnClickListener {
-            val name = findViewById<EditText>(R.id.name).text.toString()
-            val height = findViewById<EditText>(R.id.height).text.toString()
-            val weight = findViewById<EditText>(R.id.weight).text.toString()
-            val birthday = enterBirthday?.text.toString()
+            val name = getEditTextValue(R.id.name)
+            val height = getEditTextValue(R.id.height)
+            val weight = getEditTextValue(R.id.weight)
+            val birthday = enterBirthday.text.toString()
             val gender = when (genderSpinner.selectedItemPosition) {
-                0 -> 1 // 男
-                1 -> 2 // 女
-                else -> 0 // 預設值或其他情況
+                0 -> "男"
+                1 -> "女"
+                else -> "其他"
             }
+            val genderInt = convertGenderToInt(gender)
 
-            if (name.isEmpty() || height.isEmpty() || weight.isEmpty() || birthday.isEmpty()) {
-                showToast("請確認所有欄位皆已填")
-            } else {
-                currentUser?.let { user ->
-                    val userId = user.id
-                    retrofitAPI.getSpecialUserInfo(userId)
-                    addProfile(name, gender, birthday, height.toDouble(), weight.toDouble(), userId)
+            if (validateInput(name, birthday, height, weight)) {
+                val userId = currentUser?.id
+                if (userId != null) {
+                    addProfile(name, genderInt, birthday, height.toDouble(), weight.toDouble(), userId)
+                } else {
+                    showToast("未找到使用者ID")
                 }
             }
         }
@@ -67,6 +73,19 @@ class RegisterInfoActivity : AppCompatActivity() {
         }
     }
 
+    private fun getEditTextValue(viewId: Int): String {
+        val editText = findViewById<EditText>(viewId)
+        return editText.text.toString()
+    }
+
+    private fun validateInput(name: String, birthday: String, height: String, weight: String): Boolean {
+        if (name.isEmpty() || birthday.isEmpty()|| height.isEmpty() || weight.isEmpty() ) {
+            showToast("請確認所有資訊皆已填寫")
+            return false
+        }
+        return true
+    }
+
     private fun addProfile(
         name: String,
         gender: Int,
@@ -75,19 +94,25 @@ class RegisterInfoActivity : AppCompatActivity() {
         weight: Double,
         userID: Int
     ) {
-        val addProfileData = RetrofitAPI.ProfileData(name, gender, height, weight, birthday, userID)
-        val call: Call<Profile> = retrofitAPI.addProfile(addProfileData)
-        call.enqueue(object : Callback<Profile> {
-            override fun onResponse(call: Call<Profile>, response: Response<Profile>) {
-                handleAddProfileResponse(response)
-            }
+        progressDialog.setMessage("正在提交資料...")
+        progressDialog.show()
+        val addProfileData =RetrofitAPI.ProfileData(name, gender, birthday, height, weight, userID)
+        val call: Call<Profile>? = addProfileData?.let { retrofitAPI.addProfile(it) }
+        if (call != null) {
+            call.enqueue(object : Callback<Profile> {
 
-            override fun onFailure(call: Call<Profile>, t: Throwable) {
-                val toast = Toast.makeText(applicationContext, "請求失敗：" + t.message, Toast.LENGTH_SHORT)
-                t.printStackTrace() // 印出錯誤堆疊以便排查問題
-                dismissProgressDialogAndShowToast(toast)
-            }
-        })
+                override fun onResponse(call: Call<Profile>, response: Response<Profile>) {
+                    handleAddProfileResponse(response)
+                }
+
+                override fun onFailure(call: Call<Profile>, t: Throwable) {
+                    val toast = Toast(applicationContext)
+                    toast.setText("請求失敗：" + t.message)
+                    t.printStackTrace() // 印出錯誤堆疊以便排查問題
+                    dismissProgressDialogAndShowToast(toast)
+                }
+            })
+        }
     }
 
     private fun handleAddProfileResponse(response: Response<Profile>) {
@@ -95,16 +120,16 @@ class RegisterInfoActivity : AppCompatActivity() {
         if (response.isSuccessful) {
             val profile: Profile? = response.body()
             if (profile != null) {
-                this@RegisterInfoActivity.profile = profile
-                toast.setText("完成")
-                startTargetActivity()
-            } else {
-                toast.setText("伺服器返回的數據為空")
-            }
-        } else {
-            when (response.code()) {
-                400 -> toast.setText("資訊有誤")
-                else -> toast.setText("伺服器故障: ${response.message()}")
+                when (response.code()) {
+                    200 -> {
+                        this@RegisterInfoActivity.profile = profile
+                        toast.setText("完成")
+                        startTargetActivity()
+                    }
+                    400 -> { toast.setText("資料格式錯誤") }
+                    404 -> { toast.setText("未找到使用者ID")}
+                    else -> toast.setText("伺服器故障: ${response.message()}")
+                }
             }
         }
         dismissProgressDialogAndShowToast(toast)
@@ -115,10 +140,9 @@ class RegisterInfoActivity : AppCompatActivity() {
     }
 
     private fun dismissProgressDialogAndShowToast(toast: Toast) {
-        progressDialog?.dismiss()
+        progressDialog.dismiss()
         toast.show()
     }
-
 
     private fun startTargetActivity() {
         val intent = Intent(this@RegisterInfoActivity, Guide1::class.java)
@@ -133,7 +157,13 @@ class RegisterInfoActivity : AppCompatActivity() {
                 calendar[Calendar.YEAR] = year
                 calendar[Calendar.MONTH] = month
                 calendar[Calendar.DATE] = dayOfMonth
-                enterBirthday?.text = "$year/${month + 1}/$dayOfMonth"
+
+                // 指定日期格式
+                val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                val formattedDate = dateFormat.format(calendar.time)
+
+                // 将格式化的日期显示在 TextView 中
+                enterBirthday.text = formattedDate
             },
             calendar[Calendar.YEAR],
             calendar[Calendar.MONTH],
@@ -141,5 +171,20 @@ class RegisterInfoActivity : AppCompatActivity() {
         )
         dialog.show()
     }
-}
 
+    fun convertGenderToString(genderInt: Int): String {
+        return when (genderInt) {
+            1 -> "男"
+            2 -> "女"
+            else -> "其他"
+        }
+    }
+
+    fun convertGenderToInt(genderString: String): Int {
+        return when (genderString) {
+            "男" -> 1
+            "女" -> 2
+            else -> 0 // 其他情况，您可以根据需要进行调整
+        }
+    }
+}

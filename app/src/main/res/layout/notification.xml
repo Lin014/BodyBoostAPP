@@ -14,8 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
-
         <TextView
             android:id="@+id/notification"
             android:layout_width="match_parent"
@@ -26,7 +24,7 @@
             android:text="通知設定"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             tools:ignore="TextContrastCheck" />
     </FrameLayout>
@@ -37,19 +35,6 @@
         android:layout_gravity="center_horizontal"
         android:orientation="vertical"
         android:padding="24dp">
-
-        <Button
-            android:id="@+id/time_setting"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="50px"
-            android:drawablePadding="2dp"
-            android:text="提醒時間設定"
-            android:padding="8dp"
-            android:textAlignment="viewStart"
-            android:textColor="@color/white"
-            android:background="@drawable/background"/>
-
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -70,7 +55,7 @@
                 />
 
             <Switch
-                android:id="@+id/switch_Above"
+                android:id="@+id/notification_switch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
@@ -82,5 +67,29 @@
 
                 />
         </FrameLayout>
+        <Button
+            android:id="@+id/time_setting"
+            android:timePickerMode="spinner"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="50px"
+            android:drawablePadding="2dp"
+            android:text="提醒時間設定"
+            android:padding="8dp"
+            android:textAlignment="viewStart"
+            android:textColor="@color/white"
+            android:background="@drawable/background"/>
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50px"
+            android:layout_gravity="center"
+            android:background="@drawable/background"
+            android:padding="40px"
+            android:backgroundTint="@color/Second"
+            android:textAlignment="center"
+            android:textSize="20sp"/>
+
     </LinearLayout>
 </LinearLayout>

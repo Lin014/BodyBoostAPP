@@ -65,19 +65,23 @@ class RegisterActivity : AppCompatActivity() {
         if (response.isSuccessful) {
             val users: Users? = response.body()
             if (users != null) {
-                UserSingleton.user = users
-                //val newUserId = users.id
-                //toast.setText("完成，使用者 ID: $newUserId")
-                //this@RegisterActivity.users = users
-                toast.setText("完成")
-                startRegisterInfoActivity()
-            } else {
-                toast.setText("伺服器返回的數據為空")
-            }
-        } else {
-            when (response.code()) {
-                400 -> toast.setText("帳號密碼已存在")
-                else -> toast.setText("伺服器故障: ${response.message()}")
+                when (response.code()) {
+                    200 -> {
+                        // 200: 驗證碼重新寄送成功
+                        UserSingleton.user = users
+                        toast.setText("完成")
+                        startRegisterInfoActivity()
+                    }
+                    400 -> {
+                        // 400: 帳號密碼已存在
+                        showToast("帳號密碼已存在")
+                    }
+
+                    else -> {
+                        // 其他未處理的狀態碼
+                        showToast("未知錯誤：${response.code()}")
+                    }
+                }
             }
         }
         dismissProgressDialogAndShowToast(toast)

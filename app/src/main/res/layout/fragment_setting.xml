@@ -34,14 +34,7 @@
         android:orientation="vertical"
         android:padding="24dp">
 
-        <Button
-            android:id="@+id/username"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/background"
-            android:text="電子郵件已驗證"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white" />
+
         <Button
             android:id="@+id/upgrade"
             android:layout_width="match_parent"
@@ -81,7 +74,6 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
-
             android:backgroundTint="@color/white"
             android:text="刪除帳號"
             android:textColor="@color/Second" />
