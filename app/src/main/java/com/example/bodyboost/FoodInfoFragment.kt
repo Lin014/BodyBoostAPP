@@ -14,7 +14,6 @@ import androidx.fragment.app.FragmentTransaction
 class FoodInfoFragment : Fragment() {
 
     private lateinit var addButton: Button
-    private lateinit var button: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,27 +27,12 @@ class FoodInfoFragment : Fragment() {
 
         // findViewById
         addButton = rootView.findViewById(R.id.addButton)
-        button = rootView.findViewById(R.id.button_options)
 
         addButton.setOnClickListener {
             Toast.makeText(this.context, "新增成功", Toast.LENGTH_SHORT).show()
         }
 
-        button.setOnClickListener {
-            goOptions()
-        }
-
         // Inflate the layout for this fragment
         return rootView
-    }
-
-    private fun goOptions() {
-        val foodListFragment = FoodListFragment()
-        val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
-        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
-
-        fragmentTransaction.addToBackStack(null)
-        fragmentTransaction.replace(R.id.fragment_container, foodListFragment)
-        fragmentTransaction.commit()
     }
 }

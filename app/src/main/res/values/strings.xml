@@ -25,5 +25,20 @@
     <string name="weight_record">體重記錄</string>
     <string name="calorie_consumption">消耗熱量</string>
     <string name="nutrient_content">營養成分比例</string>
+    <string name="type_custom">自訂類別</string>
+    <string name="type_grains">五榖澱粉類</string>
+    <string name="type_egg_meat_fish">蛋肉魚類</string>
+    <string name="type_vegetables">蔬菜類</string>
+    <string name="type_fruits">水果類</string>
+    <string name="type_dairy_products">乳品類</string>
+    <string name="type_beans">豆類</string>
+    <string name="type_beverages">飲料類</string>
+    <string name="type_alcohol">酒類</string>
+    <string name="type_oil_nuts">油脂與堅果類</string>
+    <string name="type_snacks">零食點心</string>
+    <string name="type_fast_food">速食類</string>
+    <string name="type_condiment">調味品</string>
+    <string name="type_dish">菜餚類</string>
+    <string name="type_others">其他類別</string>
 
 </resources>

@@ -6,11 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageButton
-import android.widget.SearchView
-import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class SearchFoodFragment : Fragment() {
 
@@ -29,7 +29,8 @@ class SearchFoodFragment : Fragment() {
     private lateinit var button13: ImageButton
     private lateinit var button14: ImageButton
     private lateinit var button15: ImageButton
-    private lateinit var searchView: SearchView
+    private lateinit var searchView: EditText
+    private lateinit var foodList: FloatingActionButton
 
     private var selectNumber: Int = 0
 
@@ -59,6 +60,8 @@ class SearchFoodFragment : Fragment() {
         button13 = rootView.findViewById(R.id.button13)
         button14 = rootView.findViewById(R.id.button14)
         button15 = rootView.findViewById(R.id.button15)
+        searchView = rootView.findViewById(R.id.search_food)
+        foodList = rootView.findViewById(R.id.button_foodList)
 
         // setOnClickListener
         button1.setOnClickListener {
@@ -122,6 +125,10 @@ class SearchFoodFragment : Fragment() {
             foodType("其他類別")
         }
 
+        foodList.setOnClickListener {
+            foodList()
+        }
+
         // Inflate the layout for this fragment
         return rootView
     }
@@ -134,6 +141,16 @@ class SearchFoodFragment : Fragment() {
 
         fragmentTransaction.addToBackStack(null)
         fragmentTransaction.replace(R.id.fragment_container, foodTypeFragment)
+        fragmentTransaction.commit()
+    }
+
+    private fun foodList() {
+        val foodListFragment = FoodListFragment()
+        val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
+        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.replace(R.id.fragment_container, foodListFragment)
         fragmentTransaction.commit()
     }
 }

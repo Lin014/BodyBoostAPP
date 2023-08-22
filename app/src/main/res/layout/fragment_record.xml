@@ -239,26 +239,6 @@
 
         </LinearLayout>
 
-        <!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-        <!--            android:id="@+id/fab"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_gravity="end|bottom"-->
-        <!--            android:layout_marginTop="490dp"-->
-        <!--            android:layout_marginLeft="325dp"-->
-        <!--            android:background="#FFFFFF"-->
-        <!--            android:verticalScrollbarPosition="defaultPosition"-->
-        <!--            android:src="@drawable/baseline_add_24"-->
-        <!--            android:tint="#FFFFFF"-->
-        <!--            app:backgroundTint="#FFFFFF"-->
-        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintHorizontal_bias="0.017"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            app:layout_constraintTop_toTopOf="@+id/textView_date"-->
-        <!--            app:layout_constraintVertical_bias="0.371"-->
-        <!--            tools:ignore="SpeakableTextPresentCheck" />-->
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

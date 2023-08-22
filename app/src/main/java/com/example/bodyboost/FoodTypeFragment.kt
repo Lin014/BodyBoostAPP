@@ -14,12 +14,13 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class FoodTypeFragment : Fragment() {
 
     private lateinit var spinner: Spinner
     private lateinit var textView: TextView
-
+    private lateinit var foodList: FloatingActionButton
     private lateinit var button: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,6 +36,7 @@ class FoodTypeFragment : Fragment() {
         //findViewById
         spinner = rootView.findViewById(R.id.spinner_type)
         textView = rootView.findViewById(R.id.textview)
+        foodList = rootView.findViewById(R.id.button_foodList)
         button = rootView.findViewById(R.id.button_food)
 
         val items = listOf("五穀澱粉類", "蛋肉魚類", "蔬菜類", "水果類", "乳品類", "豆類",
@@ -61,6 +63,10 @@ class FoodTypeFragment : Fragment() {
         }
 
         //setOnClickListener
+        foodList.setOnClickListener {
+            foodList()
+        }
+
         button.setOnClickListener {
             foodInformation()
         }
@@ -75,6 +81,16 @@ class FoodTypeFragment : Fragment() {
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.addToBackStack(null)
         fragmentTransaction.replace(R.id.fragment_container, foodInfoFragment)
+        fragmentTransaction.commit()
+    }
+
+    private fun foodList() {
+        val foodListFragment = FoodListFragment()
+        val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
+        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.replace(R.id.fragment_container, foodListFragment)
         fragmentTransaction.commit()
     }
 }

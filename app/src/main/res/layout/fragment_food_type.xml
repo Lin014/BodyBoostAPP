@@ -1,66 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center_horizontal"
+    android:layout_marginBottom="55dp"
     tools:context=".FoodTypeFragment">
 
-    <FrameLayout
-        android:id="@+id/fragment_container"
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Spinner
-            android:id="@+id/spinner_type"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@color/Yellow"
-            android:textAlignment="center"
-            android:padding="10dp" />
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        tools:ignore="SpeakableTextPresentCheck">
 
         <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="390dp"
-            android:layout_height="650dp"
-            android:layout_marginTop="70dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="55dp"
             android:gravity="center"
             android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@+id/spinner_type"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
-            <TextView
-                android:id="@+id/textview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="test text"
-                android:textColor="@color/TextColor"/>
-
-            <Button
-                android:id="@+id/button_food"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="This is FOOD"
-                android:textColor="@color/white" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinner_type">
 
             <ListView
                 android:id="@+id/listView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:gravity="center_horizontal"
                 android:divider="@android:color/transparent"
                 android:dividerHeight="10.0sp"
+                android:gravity="center_horizontal"
                 android:scrollbars="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:listitem="@layout/list_item" />
 
         </LinearLayout>
 
-    </FrameLayout>
+    </ScrollView>
 
-</ScrollView>
+    <TextView
+        android:id="@+id/textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:gravity="center"
+        android:text="test text"
+        android:textColor="@color/TextColor" />
+
+    <Button
+        android:id="@+id/button_food"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="250dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:text="This is FOOD"
+        android:textColor="@color/white" />
+
+    <Spinner
+        android:id="@+id/spinner_type"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/Yellow"
+        android:padding="10dp"
+        android:textAlignment="center" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/button_foodList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="25dp"
+        android:backgroundTint="@color/white"
+        android:verticalScrollbarPosition="defaultPosition"
+        android:src="@drawable/options_icon"
+        android:importantForAccessibility="no" />
+
+</FrameLayout>
