@@ -6,16 +6,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
+import android.widget.Button
 import android.widget.ImageButton
+import android.widget.TextView
 import android.widget.Toast
+import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Locale
 
 class FoodListFragment : Fragment() {
 
     private val calendar: Calendar = Calendar.getInstance()
-    private lateinit var timeButton: ImageButton
-    private lateinit var timeTextView: EditText
+    private lateinit var timeButton: Button
+    private lateinit var continueButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +32,7 @@ class FoodListFragment : Fragment() {
 
         //findViewById
         timeButton = rootView.findViewById(R.id.button_time)
-        timeTextView = rootView.findViewById(R.id.text_time)
+        continueButton = rootView.findViewById(R.id.button_continue)
 
         //setOnClickListener
         timeButton.setOnClickListener {
@@ -45,13 +48,12 @@ class FoodListFragment : Fragment() {
         val minute = calendar.get(Calendar.MINUTE)
 
         val timePickerDialog = TimePickerDialog( requireContext(),
-            TimePickerDialog.OnTimeSetListener { _, selectedHour, selectedMinute ->
-                calendar.set(Calendar.HOUR_OF_DAY, selectedHour)
-                calendar.set(Calendar.MINUTE, selectedMinute)
-                val timeText = String.format("%02d:%02d", selectedHour, selectedMinute)
-                Toast.makeText(requireContext(), "$timeText", Toast.LENGTH_SHORT)
+            TimePickerDialog.OnTimeSetListener { _, hour, minute ->
+                val timeFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
+                timeButton.text = timeFormat.format(calendar.time)
+                Toast.makeText(this.context, "$hour:$minute", Toast.LENGTH_SHORT)
 
-
-            }, hour, minute, true).show()
+            }, hour, minute, true)
+        timePickerDialog.show()
     }
 }

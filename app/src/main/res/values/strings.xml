@@ -18,8 +18,8 @@
     <string name="search">Search</string>
     <string name="recently_sport">近期運動</string>
     <string name="other_sport">其他運動</string>
-    <string name = "open">Open</string>
-    <string name = "close">Close</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
     <string name="back" />
     <string name="weight_input">輸入體重</string>
     <string name="weight_record">體重記錄</string>
@@ -40,5 +40,9 @@
     <string name="type_condiment">調味品</string>
     <string name="type_dish">菜餚類</string>
     <string name="type_others">其他類別</string>
+    <string name="breakfast">早餐</string>
+    <string name="options">食物選項</string>
+    <string name="continue_add">繼續新增</string>
+    <string name="complete_add">新增完成</string>
 
 </resources>
