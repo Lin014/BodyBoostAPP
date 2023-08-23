@@ -98,7 +98,6 @@ class RecordFragment : Fragment() {
             DatePickerDialog.OnDateSetListener { _: DatePicker, y: Int, m: Int, d: Int ->
                 val selectedCalendar = Calendar.getInstance()
                 selectedCalendar.set(y, m, d)
-                val selectedDateInMillis = selectedCalendar.timeInMillis
 
                 // 使用 SimpleDateFormat 將日期格式化為 'YYYY年 MM月 DD日' 的字串
                 val dateFormat = SimpleDateFormat("yyyy年 MM月 dd日", Locale.getDefault())

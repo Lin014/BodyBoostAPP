@@ -30,7 +30,7 @@
         android:layout_marginHorizontal="50dp"
         android:padding="5dp"
         android:text="2023年 08月 20日"
-        android:textColor="#444444"
+        android:textColor="#222222"
         android:textSize="26sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -70,7 +70,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="300dp"
             android:layout_marginTop="65dp"
             android:orientation="vertical"
             android:paddingHorizontal="30dp"
@@ -78,21 +78,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/button_time">
 
-            <TextView
+            <ListView
+                android:id="@+id/option_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="奶茶　　1 杯"
-                android:textAlignment="textStart"
-                android:textColor="@color/TextColor"
-                android:textSize="20sp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="蛋餅　　1 份"
-                android:textAlignment="textStart"
-                android:textColor="@color/TextColor"
-                android:textSize="20sp" />
+                android:divider="@android:color/transparent"
+                android:dividerHeight="2sp"
+                android:gravity="center_horizontal"
+                android:scrollbars="none"
+                tools:listitem="@layout/option_list" />
 
         </LinearLayout>
 
