@@ -1,18 +1,18 @@
 package com.example.bodyboost
 
-import android.app.DatePickerDialog
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.DatePicker
-import android.widget.EditText
 import androidx.fragment.app.Fragment
+import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.charts.PieChart
-import com.github.mikephil.charting.components.XAxis
+import com.github.mikephil.charting.components.*
+import com.github.mikephil.charting.data.BarData
+import com.github.mikephil.charting.data.BarDataSet
+import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
@@ -21,18 +21,14 @@ import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.formatter.PercentFormatter
-import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 class ReportFragment : Fragment() {
 
     private lateinit var weightChart: LineChart
     private lateinit var caloriesChart: LineChart
     private lateinit var nutrientChart: PieChart
-
-    private lateinit var editTextWeight: EditText
-    private lateinit var addWeightButton: Button
+    private lateinit var waterChart: BarChart
 
     // date and weight data list
     private val weightRecordDate = mutableListOf<String>()
@@ -50,6 +46,11 @@ class ReportFragment : Fragment() {
     private val nutrientLabel = mutableListOf<String>()
     private val nutrientRecordDate = mutableListOf<String>()
 
+    //water data list
+    private val waterList = mutableListOf<Float>()
+    private val waterRecordDate = mutableListOf<String>()
+    private val waterMaxAndMinList = mutableListOf<Float>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -64,8 +65,7 @@ class ReportFragment : Fragment() {
         weightChart = rootView.findViewById(R.id.lineChart_weight)
         caloriesChart = rootView.findViewById(R.id.lineChart_calorie)
         nutrientChart = rootView.findViewById(R.id.pieChart_nutrient)
-        editTextWeight = rootView.findViewById(R.id.editText_weight)
-        addWeightButton = rootView.findViewById(R.id.button_weightRecord)
+        waterChart = rootView.findViewById(R.id.barChart_water)
 
         // api write here
         // get dateList and weightList data: WeightHistory
@@ -73,10 +73,7 @@ class ReportFragment : Fragment() {
         weightChartInit()
         caloriesChartInit()
         nutrientChartInit()
-
-        addWeightButton.setOnClickListener {
-            inputWeight()
-        }
+        waterChartInit()
 
         // Inflate the layout for this fragment
         return rootView
@@ -158,50 +155,6 @@ class ReportFragment : Fragment() {
         weightChart.data = lineData
         weightChart.setVisibleXRangeMaximum(4f)
         weightChart.invalidate()
-    }
-
-    private fun inputWeight() {
-        val weightString = editTextWeight.text.toString()
-        if (weightString.isNotEmpty()) {
-            val weight = weightString.toFloat()
-            showDatePicker(weight)
-        }
-    }
-
-    private fun showDatePicker(weight: Float) {
-        val calendar = Calendar.getInstance()
-        val year = calendar.get(Calendar.YEAR)
-        val month = calendar.get(Calendar.MONTH)
-        val day = calendar.get(Calendar.DAY_OF_MONTH)
-
-        val datePickerDialog = DatePickerDialog(
-            requireContext(),
-            DatePickerDialog.OnDateSetListener { _: DatePicker, y: Int, m: Int, d: Int ->
-                val selectedCalendar = Calendar.getInstance()
-                selectedCalendar.set(y, m, d)
-                val selectedDateInMillis = selectedCalendar.timeInMillis
-
-
-                // 使用 SimpleDateFormat 將日期格式化為 'YYYY-MM-DD' 的字串
-                val dateFormat = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault())
-                val selectedDateFormatted = dateFormat.format(selectedCalendar.time)
-
-                // add new date and weight data to weight list
-                // get month and day
-                val dateResult = selectedDateFormatted.substring(5)
-                weightRecordDate.add(dateResult)
-                weightList.add(weight)
-                // update weightChart
-                setWeightChart(findWeightChartMaxValue(weightList.max()), findWeightChartMinValue(weightList.min()))
-                // api write here
-                // update date and weight data: profile and WeightHistory
-            },
-            year,
-            month,
-            day
-        )
-        editTextWeight.text.clear()
-        datePickerDialog.show()
     }
 
     private fun caloriesChartInit() {
@@ -306,7 +259,7 @@ class ReportFragment : Fragment() {
     private fun setNutrientChart() {
         // set nutrient
         // set color
-        val pieColors = java.util.ArrayList<Int>()
+        val pieColors = ArrayList<Int>()
         pieColors.add(0xFFFF9E9E.toInt())
         pieColors.add(0xFFFFBE9E.toInt())
         pieColors.add(0xFFFFDB9E.toInt())
@@ -343,5 +296,81 @@ class ReportFragment : Fragment() {
         nutrientChart.data = pieData
         nutrientChart.invalidate()
     }
-}
 
+    private fun waterChartInit() {
+        waterChart.apply {
+            description.isEnabled = false
+            axisRight.isEnabled = false
+            setNoDataText("目前尚無資料")
+            setNoDataTextColor(Color.BLACK)
+            setDrawGridBackground(false)
+            setDrawBorders(false)
+            invalidate()
+        }
+        // set weightChartMaxAndMinList
+        for (i in 0..4000 step 5) {
+            waterMaxAndMinList.add(i.toFloat())
+        }
+        // updateData
+        if (waterList.isNotEmpty()) {
+            setWaterChart(findWaterMaxValue(waterList.max()), findWaterMinValue(waterList.min()))
+        }
+    }
+
+    private fun setWaterChart(yMax: Float, yMin: Float) {
+        // set water
+        // set X
+        waterChart.xAxis.apply {
+            position = XAxis.XAxisPosition.BOTTOM
+            valueFormatter = IndexAxisValueFormatter(waterRecordDate)
+            labelCount = waterRecordDate.size
+            granularity = 1f
+            setDrawGridLines(false)
+        }
+        // set Y
+        waterChart.axisLeft.apply {
+            axisMaximum = yMax
+            axisMinimum = yMin
+            labelCount = 5
+        }
+        // add Y data
+        val yList = mutableListOf<BarEntry>()
+        var index = 0f
+        for (water in waterList) {
+            yList.add(BarEntry(index, water))
+            index += 1f
+        }
+        // set Y data
+        val barDataSet = BarDataSet(yList, "飲水量")
+        barDataSet.setDrawValues(false)
+        barDataSet.color = Color.parseColor("#87B3FF")
+
+        val barData = BarData(barDataSet)
+        // update data
+        waterChart.data = barData
+        waterChart.setVisibleXRangeMaximum(7f)
+        waterChart.invalidate()
+    }
+
+    private fun findWaterMaxValue(waterListMaxValue: Float): Float {
+        var max = 0f
+        for (value in waterMaxAndMinList) {
+            if (value > waterListMaxValue) {
+                max = value.toFloat()
+                break
+            }
+        }
+        return max
+    }
+
+    private fun findWaterMinValue(waterListMinValue: Float): Float {
+        var min = 0f
+        for (value in waterMaxAndMinList) {
+            if (value < waterListMinValue) {
+                min = value.toFloat()
+                break
+            }
+        }
+        return min
+    }
+}

@@ -44,5 +44,6 @@
     <string name="options">食物選項</string>
     <string name="continue_add">繼續新增</string>
     <string name="complete_add">新增完成</string>
+    <string name="search_food">搜尋</string>
 
 </resources>

@@ -1,63 +1,55 @@
 package com.example.bodyboost
 
 import android.app.TimePickerDialog
+import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
-import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 
-class FoodListFragment : Fragment() {
+class FoodOptionsActivity : AppCompatActivity() {
 
     private val calendar: Calendar = Calendar.getInstance()
     private lateinit var timeButton: Button
     private lateinit var continueButton: Button
     private lateinit var completeButton: Button
+    private lateinit var dateText: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-    }
+        setContentView(R.layout.activity_food_options)
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val rootView = inflater.inflate(R.layout.fragment_food_list, container, false)
+        // findViewById
+        timeButton = findViewById(R.id.button_time)
+        continueButton = findViewById(R.id.button_continue)
+        completeButton = findViewById(R.id.button_complete)
+        dateText = findViewById(R.id.textView_date)
 
-        //findViewById
-        timeButton = rootView.findViewById(R.id.button_time)
-        continueButton = rootView.findViewById(R.id.button_continue)
-        completeButton = rootView.findViewById(R.id.button_complete)
-
-        //setOnClickListener
+        // setOnClickListener
         timeButton.setOnClickListener {
             showTimePicker()
         }
-
         continueButton.setOnClickListener {
-            Toast.makeText(this.context, "返回上一頁", Toast.LENGTH_SHORT)
+            showToast("返回上一頁")
+            finish()
         }
-
         completeButton.setOnClickListener {
-            Toast.makeText(this.context, "輸入成功", Toast.LENGTH_SHORT)
+            showToast("輸入成功")
+            finish()
         }
-
-        // Inflate the layout for this fragment
-        return rootView
     }
 
     private fun showTimePicker() {
+
         val hour = calendar.get(Calendar.HOUR_OF_DAY)
         val minute = calendar.get(Calendar.MINUTE)
 
-        val timePickerDialog = TimePickerDialog( requireContext(),
+        val timePickerDialog = TimePickerDialog( this,
             TimePickerDialog.OnTimeSetListener { _, h, m ->
                 val selectedCalendar = Calendar.getInstance()
                 selectedCalendar.set(Calendar.HOUR_OF_DAY, h)
@@ -67,5 +59,9 @@ class FoodListFragment : Fragment() {
 
             }, hour, minute, true)
         timePickerDialog.show()
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }

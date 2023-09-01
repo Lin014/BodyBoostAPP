@@ -2,6 +2,7 @@ package com.example.bodyboost
 
 import android.app.AlertDialog
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,9 +14,6 @@ import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
@@ -30,7 +28,6 @@ class RecordFragment : Fragment() {
     private lateinit var dinnerButton: ImageButton
     private lateinit var otherFoodButton: ImageButton
     private lateinit var dateTextView: TextView
-//    private lateinit var fabutton: FloatingActionButton
 
     // food list
     private val foodRecordList = mutableListOf<String>()
@@ -64,19 +61,19 @@ class RecordFragment : Fragment() {
         }
 
         breakfastButton.setOnClickListener {
-            searchFood()
+            replaceActivity()
         }
 
         lunchButton.setOnClickListener {
-            searchFood()
+            replaceActivity()
         }
 
         dinnerButton.setOnClickListener {
-            searchFood()
+            replaceActivity()
         }
 
         otherFoodButton.setOnClickListener {
-            searchFood()
+            replaceActivity()
         }
 
         waterButton.setOnClickListener {
@@ -129,20 +126,15 @@ class RecordFragment : Fragment() {
             val inputNumber = waterText.text.toString()
             Toast.makeText(this.context, "往健康水美人邁進 $inputNumber 步", Toast.LENGTH_SHORT).show()
         }
-
         builder.setNegativeButton("取消", null)
 
         val dialog = builder.create()
         dialog.show()
     }
 
-    private fun searchFood() {
-        val searchFoodFragment = SearchFoodFragment()
-        val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
-        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.addToBackStack(null)
-        fragmentTransaction.replace(R.id.fragment_container, searchFoodFragment)
-        fragmentTransaction.commit()
+    private fun replaceActivity() {
+        val intent = Intent(activity, SearchFoodActivity::class.java)
+        startActivity(intent)
     }
 
 
