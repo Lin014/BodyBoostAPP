@@ -1,5 +1,6 @@
 package com.example.bodyboost.entity
 
+import java.io.Serializable
 
 data class Food(
     val id: Int,
@@ -14,4 +15,4 @@ data class Food(
     val modify: Boolean,
     val food_type_id: Int,
     val store_id: Int
-)
+) : Serializable

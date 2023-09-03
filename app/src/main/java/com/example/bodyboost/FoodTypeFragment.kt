@@ -15,6 +15,7 @@ import android.widget.ListView
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.FragmentManager
 import com.example.bodyboost.entity.Food
 import com.example.bodyboost.entity.FoodType
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -24,12 +25,14 @@ import retrofit2.Response
 
 class FoodTypeFragment : Fragment() {
 
+    private val userId: Int = 1
     private var foodList: List<Food>? = null
     private var foodTypeList: List<FoodType>? = null
-    private val retrofitAPI = RetrofitManager.getInstance()
-    private val userId: Int = 1
     private var progressDialog: ProgressDialog? = null
     private var foodListAdapter: FoodListAdapter? = null
+    private val retrofitAPI = RetrofitManager.getInstance()
+    private val spinnerItems = listOf("五穀澱粉類", "蛋肉魚類", "蔬菜類", "水果類", "乳品類", "豆類", "飲料類", "酒類", "油脂與堅果類", "零食點心", "速食類", "調味品", "菜餚類", "其他類別")
+    private lateinit var back: Button
     private lateinit var listView: ListView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,48 +44,26 @@ class FoodTypeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val rootView = inflater.inflate(R.layout.fragment_food_type, container, false)
-        val items = listOf("五穀澱粉類", "蛋肉魚類", "蔬菜類", "水果類", "乳品類", "豆類", "飲料類", "酒類",
-            "油脂與堅果類", "零食點心", "速食類", "調味品", "菜餚類", "其他類別")
 
-        //findViewById
+        // findViewById
         val spinner: Spinner = rootView.findViewById(R.id.spinner_type)
         val foodOptions: FloatingActionButton = rootView.findViewById(R.id.button_food_options)
+        back = rootView.findViewById(R.id.back)
         listView = rootView.findViewById(R.id.listView)
 
-
-        val textView: TextView = rootView.findViewById(R.id.textview)
-        val button: TextView = rootView.findViewById(R.id.button_food)
-        val testButton: Button = rootView.findViewById(R.id.test)
-
-
-        val adapter = ArrayAdapter(this.requireContext(), android.R.layout.simple_spinner_item, items)
+        val adapter = ArrayAdapter(this.requireContext(), android.R.layout.simple_spinner_item, spinnerItems)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = adapter
 
-        //setOnClickListener
-        foodOptions.setOnClickListener {
-            replaceActivity(FoodOptionsActivity())
-        }
+        // setOnClickListener
+        back.setOnClickListener { replaceActivity(SearchFoodActivity()) }
+        foodOptions.setOnClickListener { replaceActivity(FoodOptionsActivity()) }
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?, view: View?, position: Int, id: Long
-            ) {
-                val option = items[position]
-                //Toast.makeText(context, option, Toast.LENGTH_SHORT).show()
-                textView.text = option
-                // api test
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                val option = spinnerItems[position]
                 searchFood(position + 2)
             }
             override fun onNothingSelected(parent: AdapterView<*>?) { }
-        }
-
-        button.setOnClickListener {
-            replaceActivity(FoodInfoActivity())
-        }
-
-        testButton.setOnClickListener {
-            searchFood(2)
-//            getFoodType()
         }
 
         // Inflate the layout for this fragment
@@ -91,23 +72,21 @@ class FoodTypeFragment : Fragment() {
 
     private fun searchFood(foodId: Int) {
         loadProgressDialog()
-        var call = retrofitAPI.searchFoodById(foodId.toString(), userId.toString(), 1, 50)
+        val call = retrofitAPI.searchFoodById(foodId.toString(), userId.toString(), 1, 50)
         call.enqueue(object : Callback<List<Food>> {
             override fun onResponse(call: Call<List<Food>>, response: Response<List<Food>>) {
                 searchFoodResponse(response)
             }
             override fun onFailure(call: Call<List<Food>>, t: Throwable) {
-                val toast = Toast(context)
-                toast.setText("請求失敗：" + t.message)
+                Toast.makeText(context, "請求失敗：" + t.message, Toast.LENGTH_SHORT).show()
                 t.printStackTrace()
-                dismissProgressDialogAndShowToast(toast)
+                dismissProgressDialog()
                 println(t.message)
             }
         })
     }
 
     private fun searchFoodResponse(response: Response<List<Food>>) {
-        val toast = Toast.makeText(context, "no message", Toast.LENGTH_SHORT)
         if (response.isSuccessful) {
             val food: List<Food>? = response.body()
             if (food != null) {
@@ -115,26 +94,41 @@ class FoodTypeFragment : Fragment() {
                     200 -> {
                         this.foodList = food
                         foodListAdapter = FoodListAdapter(this.requireContext(), foodList!!)
-                        listView.adapter = foodListAdapter
-                        toast.setText("成功獲取食物資料")
+                        displayFoodListView(foodListAdapter!!)
+//                        Toast.makeText(context, "成功獲取食物資料", Toast.LENGTH_SHORT).show()
                     }
-                    404 -> toast.setText("404 錯誤")
-                    else -> toast.setText("伺服器故障")
+                    404 -> Toast.makeText(context, "404 錯誤", Toast.LENGTH_SHORT).show()
+                    else -> Toast.makeText(context, "伺服器故障", Toast.LENGTH_SHORT).show()
                 }
             } else {
-                toast.setText("伺服器返回數據為空")
+                Toast.makeText(context, "伺服器返回數據為空", Toast.LENGTH_SHORT).show()
                 println(response.toString())
             }
         } else {
-            toast.setText("搜尋食物請求失敗： " + response.message())
+            Toast.makeText(context, "搜尋食物請求失敗：" + response.message(), Toast.LENGTH_SHORT).show()
             println(response.toString())
         }
-        dismissProgressDialogAndShowToast(toast)
+        dismissProgressDialog()
     }
 
-    private fun dismissProgressDialogAndShowToast(toast: Toast) {
+    private fun displayFoodListView(foodListAdapter: FoodListAdapter) {
+        listView.adapter = foodListAdapter
+        listView.onItemClickListener = object : AdapterView.OnItemClickListener {
+            override fun onItemClick(adapterView: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                val intent = Intent(activity, FoodInfoActivity::class.java)
+                val food: Food? = foodList?.get(position)
+                if (food != null) {
+                    intent.putExtra("food", food)
+                    startActivity(intent)
+                } else {
+                    Toast.makeText(context, "食物資料為空", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
+    private fun dismissProgressDialog() {
         progressDialog?.dismiss()
-        toast.show()
     }
 
     private fun replaceActivity(newActivity: Activity) {
@@ -153,6 +147,14 @@ class FoodTypeFragment : Fragment() {
             setCanceledOnTouchOutside(false)
             show()
         }
+    }
+
+    private fun goBackPage() {
+        val fragmentManager = requireActivity().supportFragmentManager
+        val transaction = fragmentManager.beginTransaction()
+        transaction.replace(R.id.fragment_container, RecordFragment())
+        transaction.addToBackStack(null)
+        transaction.commit()
     }
 
 /*

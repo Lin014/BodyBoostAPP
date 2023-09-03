@@ -96,7 +96,7 @@ interface RetrofitAPI {
 
 // ------store--------------------------------------------------------------------------------------
     @GET("api/store/")
-    fun getAllStore(): Call<Store>
+    fun getAllStore(): Call<List<Store>>
 
     @POST("api/store/add/")
     fun addStore( @Body name: StoreData ): Call<Store>

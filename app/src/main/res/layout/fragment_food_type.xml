@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    android:id="@+id/fragment_container"
     tools:context=".FoodTypeFragment">
 
     <LinearLayout
@@ -30,6 +31,7 @@
 
     </LinearLayout>
 
+<!--
     <TextView
         android:id="@+id/textview"
         android:layout_width="match_parent"
@@ -58,6 +60,7 @@
         android:gravity="center"
         android:text="test"
         android:textColor="@color/white" />
+-->
 
     <Spinner
         android:id="@+id/spinner_type"
@@ -99,8 +102,9 @@
         android:layout_gravity="end|bottom"
         android:layout_margin="25dp"
         android:backgroundTint="@color/white"
-        android:verticalScrollbarPosition="defaultPosition"
+        android:importantForAccessibility="no"
         android:src="@drawable/options_icon"
-        android:importantForAccessibility="no" />
+        android:verticalScrollbarPosition="defaultPosition"
+        tools:ignore="ImageContrastCheck" />
 
 </FrameLayout>
