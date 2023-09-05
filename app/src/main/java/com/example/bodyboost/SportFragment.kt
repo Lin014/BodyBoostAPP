@@ -5,6 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+
 class SportFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var mParam1: String? = null
@@ -19,8 +22,16 @@ class SportFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sports, container, false)
+        val view = inflater.inflate(R.layout.fragment_sports, container, false)
+
+        val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_view)
+        //val adapter = YourRecyclerViewAdapter(dataList) // dataList 數據列表
+        //recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+        return view
     }
+
 
     companion object {
         // TODO: Rename parameter arguments, choose names that match

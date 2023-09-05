@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <!-- 添加 One Tap API 配置 -->
@@ -20,38 +20,49 @@
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <!--android 10.0使用wifi api新添加的權限-->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.SEND_NOTIFICATIONS" />
     <application
         android:allowBackup="true"
-        android:dataExtractionRules="@xml/data_extraction_rules"
-        android:fullBackupContent="@xml/backup_rules"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.BodyBoost"
         tools:targetApi="31">
         <activity
-            android:name=".VerificationCode"
+            android:name=".Register.Target3"
             android:exported="true" />
         <activity
-            android:name=".TargetInfo4"
+            android:name=".Register.Target2"
             android:exported="true" />
         <activity
-            android:name=".TargetInfo3"
+            android:name=".Register.Target1"
             android:exported="true" />
         <activity
-            android:name=".TargetInfo2"
+            android:name=".Setting.NotificationFragment"
             android:exported="true" />
         <activity
-            android:name=".TargetInfo1"
+            android:name=".Register.VerificationCode"
             android:exported="true" />
         <activity
-            android:name=".Guide3"
+            android:name=".Register.TargetInfo4"
             android:exported="true" />
         <activity
-            android:name=".Guide2"
+            android:name=".Register.TargetInfo3"
             android:exported="true" />
         <activity
-            android:name=".Guide1"
+            android:name=".Register.TargetInfo2"
+            android:exported="true" />
+        <activity
+            android:name=".Register.TargetInfo1"
+            android:exported="true" />
+        <activity
+            android:name=".Register.Guide3"
+            android:exported="true" />
+        <activity
+            android:name=".Register.Guide2"
+            android:exported="true" />
+        <activity
+            android:name=".Register.Guide1"
             android:exported="true" />
         <activity
             android:name=".UpgradeFragment"
@@ -69,7 +80,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".TargetActivity"
+            android:name=".Register.TargetActivity"
             android:exported="true" />
         <activity
             android:name=".ForgetPasswordActivity"
@@ -81,11 +92,21 @@
             android:name=".MainActivity"
             android:exported="true" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".Register.RegisterActivity"
             android:exported="true" />
         <activity
-            android:name=".RegisterInfoActivity"
+            android:name=".Register.RegisterInfoActivity"
             android:exported="true" />
+
+        <!-- 註冊 ReminderBroadcastReceiver -->
+        <receiver
+            android:name="com.example.bodyboost.ReminderBroadcastReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.example.bodyboost.REMINDER_ACTION" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

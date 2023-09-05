@@ -4,13 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.Button
-import android.widget.Spinner
-import android.widget.SpinnerAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.example.bodyboost.Manager.SignInManager
+import com.example.bodyboost.Model.DailyBonus
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -20,7 +18,6 @@ import java.util.Locale
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
     private val retrofitAPI = RetrofitManager.getInstance()
-    private lateinit var add_btn: Button
     private lateinit var check_in_btn: Button
     private val currentUser = UserSingleton.user
     private lateinit var signInManager: SignInManager
@@ -34,28 +31,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         val listItems = listOf("滷肉飯 200 kcal", "珍珠奶茶 200 kcal", "珍珠奶茶 200 kcal", "珍珠奶茶 200 kcal")
 
-        // 下拉式選單
-        val spinner = view.findViewById<Spinner>(R.id.spinner)
-        spinner.adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, listItems) as SpinnerAdapter
-        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                println("error")
-            }
-
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                val type = parent?.getItemAtPosition(position).toString()
-            }
-        }
-
-        add_btn = view.findViewById<Button>(R.id.add_btn)
-        add_btn.setOnClickListener {
-            // Toast.makeText(activity, type, Toast.LENGTH_LONG).show()
-        }
 
         signInManager = SignInManager(requireContext())
-        check_in_btn = view.findViewById<Button>(R.id.daily_check_in_btn)
+        check_in_btn = view.findViewById<Button>(R.id.daily_signup)
         check_in_btn.setOnClickListener {
-            //if (signInManager.canSignIn()) {
+            if (signInManager.canSignIn()) {
                 val userId = currentUser?.id
                 val sdf = SimpleDateFormat("yyyy/MM/dd HH:mm:ss", Locale.getDefault())
                 val currentTime = sdf.format(Date())
@@ -74,9 +54,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                     // 执行签到
                     signInManager.performSignIn()
                 }
-            //} else {
-                //showToast("今天已經簽到過了！", requireContext())
-            //}
+            } else {
+                showToast("今天已經簽到過了！", requireContext())
+            }
         }
         return view
     }

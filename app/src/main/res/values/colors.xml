@@ -11,6 +11,6 @@
     <color name="background">#C1D2EF</color>
     <color name="Second">#E39D8F</color>
     <color name="Yellow">#F8E8DC</color>
-    <color name="TextColor">#FF000000</color>
+    <color name="TextColor">#000000</color>
     <color name="TextBoxColor">#575757</color>
 </resources>

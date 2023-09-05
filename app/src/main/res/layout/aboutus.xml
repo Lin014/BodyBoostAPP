@@ -5,7 +5,7 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditFragment"
+    tools:context=".Setting.EditFragment"
     android:orientation="vertical"
     android:layout_gravity="center_vertical"
     android:background="@color/white">
@@ -15,11 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/baseline_arrow_back_ios_new_24"
-            android:drawableTint="@color/white" />
+
         <TextView
             android:id="@+id/nav_about"
             android:layout_width="match_parent"
@@ -34,6 +30,12 @@
             android:textStyle="bold"
             tools:ignore="TextContrastCheck" />
 
-    </FrameLayout>
 
+    </FrameLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="開發中，敬請期待"
+        android:textSize="20dp"
+        android:layout_gravity="center"/>
 </LinearLayout>

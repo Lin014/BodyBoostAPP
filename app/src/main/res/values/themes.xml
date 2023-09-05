@@ -7,7 +7,6 @@
         <item name="colorOnPrimary">@color/Second</item>
         <item name="android:iconTint">@color/white</item>
         <item name="actionBarPopupTheme">@color/white</item>
-        <item name="android:text">@color/black</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/Lavender</item>
         <item name="colorSecondaryVariant">@color/Lavender</item>
