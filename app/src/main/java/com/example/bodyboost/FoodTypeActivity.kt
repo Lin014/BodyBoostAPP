@@ -3,23 +3,21 @@ package com.example.bodyboost
 import android.app.Activity
 import android.app.ProgressDialog
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.AdapterView
-import android.widget.Button
 import android.widget.ListView
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.bodyboost.Model.Food
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class FoodTypeActivity : AppCompatActivity() {
 
-    private val userId: Int = 1
-    private val receivedIntent = intent
+    val currentUser = MainActivity().currentUser!!
     private var progressDialog: ProgressDialog? = null
     private val retrofitAPI = RetrofitManager.getInstance()
 
@@ -33,30 +31,25 @@ class FoodTypeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_food_type)
+        val userId = currentUser.id
 
         // findViewById
-        val spinner: Spinner = findViewById(R.id.spinner_type)
-        val foodOptions: FloatingActionButton = findViewById(R.id.button_food_options)
-        val back: Button = findViewById(R.id.back)
+        var spinner = findViewById<Spinner>(R.id.spinner_type)
         listView = findViewById(R.id.listView)
 
         // set spinner
-        if (receivedIntent != null) {
-            optionId = receivedIntent.getIntExtra("optionId", 0)
-            spinner.setSelection(optionId)
-        }
 
         // setOnClickListener
-        back.setOnClickListener {
-            finish()
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                val option = spinnerItems[position]
+                displayFood(position + 2, userId)
+            }
+            override fun onNothingSelected(parent: AdapterView<*>?) { }
         }
-        foodOptions.setOnClickListener {
-            navigateActivity(FoodOptionsActivity())
-        }
-
     }
 
-    private fun displayFood(foodId: Int) {
+    private fun displayFood(foodId: Int, userId: Int) {
         loadProgressDialog()
         val call = retrofitAPI.searchFoodById("2", userId.toString(), 1, 50)
         call.enqueue(object : Callback<List<Food>> {
@@ -78,6 +71,7 @@ class FoodTypeActivity : AppCompatActivity() {
             if (food != null) {
                 when (response.code()) {
                     200 -> {
+                        showToast("122")
                         this.foodList = food
                         foodListAdapter = FoodListAdapter(this, foodList!!)
                         foodListView(foodListAdapter!!)

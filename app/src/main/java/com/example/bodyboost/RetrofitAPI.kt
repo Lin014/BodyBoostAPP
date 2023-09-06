@@ -254,52 +254,27 @@ interface RetrofitAPI {
         @Query("page_size") page_size:Int
     ): Call<List<Food>>
 
-    @POST("api/food/add/")
-    fun addFood( @Body addFoodData: AddFoodData ): Call<Food>
-    data class AddFoodData(
-        val name: String,
-        val calorie: Float,
-        val size: Float,
-        val unit: String,
-        val protein: Float,
-        val fat: Float,
-        val carb: Float,
-        val sodium: Float,
-        val modify: Boolean,
-        val food_type_id: Int,
-        val store_id: Int
-    )
-
-    @DELETE("api/food/delete/{id}")
-    fun deleteFood( @Path("id") id:String ): Call<Food>
-
-    @PUT("api/food/update/{id}")
-    fun updateFood(
-        @Path("id") id:String,
-        @Body updateFood: Food
-    ): Call<Void>
-
 // ------food type----------------------------------------------------------------------------------
-    @GET("api/foodtype/")
-    fun getFoodType(): Call<List<FoodType>>
-
-    @POST("api/foodtype/add/")
-    fun addFoodType( @Body addFoodType: FoodTypeData ): Call<FoodType>
-    data class FoodTypeData(
-        val type:String
-    )
-
-    @DELETE("api/foodtype/delete/{id}")
-    fun deleteFoodType( @Path("id") id:String ): Call<FoodType>
-
-    @PUT("api/foodtype/update/{id}")
-    fun updateFoodType(
-        @Path("id") id:String,
-        @Body type: FoodType
-    ): Call<Void>
+//    @GET("api/foodtype/")
+//    fun getFoodType(): Call<List<FoodType>>
+//
+//    @POST("api/foodtype/add/")
+//    fun addFoodType( @Body addFoodType: FoodTypeData ): Call<FoodType>
+//    data class FoodTypeData(
+//        val type:String
+//    )
+//
+//    @DELETE("api/foodtype/delete/{id}")
+//    fun deleteFoodType( @Path("id") id:String ): Call<FoodType>
+//
+//    @PUT("api/foodtype/update/{id}")
+//    fun updateFoodType(
+//        @Path("id") id:String,
+//        @Body type: FoodType
+//    ): Call<Void>
 
 // ------search food--------------------------------------------------------------------------------
-    @GET("api/searchfood/foodtype/{id}/{userId}")
+    @GET("/api/searchfood/foodtype/{id}/{userId}")
     fun searchFoodById(
         @Path("id") id:String,
         @Path("userId") userId:String,
@@ -343,11 +318,11 @@ interface RetrofitAPI {
     ): Call<Void>
 
 // ------custom food--------------------------------------------------------------------------------
-    @GET("api/customfood")
-    fun getCustomFood(
-        @Query("page") page:Int,
-        @Query("page_size") page_size:Int
-    ): Call<CustomFood>
+//    @GET("api/customfood")
+//    fun getCustomFood(
+//        @Query("page") page:Int,
+//        @Query("page_size") page_size:Int
+//    ): Call<CustomFood>
 
     @POST("api/customfood/add")
     fun addCustomFood( @Body addCustomFoodData: CustomFoodData )

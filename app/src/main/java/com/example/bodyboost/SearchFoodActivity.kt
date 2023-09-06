@@ -11,7 +11,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class SearchFoodActivity : AppCompatActivity() {
 
-    private var optionId: Int = 0
+    var optionId: Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search_food)
@@ -58,7 +58,7 @@ class SearchFoodActivity : AppCompatActivity() {
 
     private fun navigateToFoodTypeActivity(optionId: Int) {
         val intent = Intent(this, FoodTypeActivity::class.java)
-//        intent.putExtra("optionId", optionId)
+        intent.putExtra("optionId", optionId)
         startActivity(intent)
     }
 

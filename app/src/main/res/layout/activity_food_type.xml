@@ -31,37 +31,6 @@
 
     </LinearLayout>
 
-    <!--
-        <TextView
-            android:id="@+id/textview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="400dp"
-            android:gravity="center"
-            android:text="test text"
-            android:textColor="@color/TextColor" />
-
-        <Button
-            android:id="@+id/button_food"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="430dp"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center"
-            android:text="This is FOOD"
-            android:textColor="@color/white" />
-
-        <Button
-            android:id="@+id/test"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="480dp"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center"
-            android:text="test"
-            android:textColor="@color/white" />
-    -->
-
     <Spinner
         android:id="@+id/spinner_type"
         android:layout_width="match_parent"
