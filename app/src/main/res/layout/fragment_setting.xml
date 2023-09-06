@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SettingFragment"
+    tools:context=".Setting.SettingFragment"
     android:orientation="vertical"
     android:layout_gravity="center_vertical"
     android:background="@color/white"
@@ -34,14 +34,7 @@
         android:orientation="vertical"
         android:padding="24dp">
 
-        <Button
-            android:id="@+id/username"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/background"
-            android:text="電子郵件已驗證"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white" />
+
         <Button
             android:id="@+id/upgrade"
             android:layout_width="match_parent"
@@ -69,14 +62,6 @@
             android:text="夜間模式"
             android:textColor="@color/white" />
         <Button
-            android:id="@+id/delete_account"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/custom_edittext"
-            android:text="刪除帳號"
-            android:textColor="@color/white" />
-        <Button
             android:id="@+id/select_character"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -84,5 +69,14 @@
             android:background="@drawable/custom_edittext"
             android:text="選擇動畫人物"
             android:textColor="@color/white" />
+        <Button
+            android:id="@+id/delete_account"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/white"
+            android:text="刪除帳號"
+            android:textColor="@color/Second" />
+
     </LinearLayout>
 </LinearLayout>

@@ -13,11 +13,9 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
 import android.widget.Spinner
-import android.widget.TextView
 import android.widget.Toast
-import androidx.fragment.app.FragmentManager
-import com.example.bodyboost.entity.Food
-import com.example.bodyboost.entity.FoodType
+import com.example.bodyboost.Model.Food
+import com.example.bodyboost.Model.FoodType
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import retrofit2.Call
 import retrofit2.Callback

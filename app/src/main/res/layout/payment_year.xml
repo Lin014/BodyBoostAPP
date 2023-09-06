@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center_vertical"
+    android:background="@color/Lavender">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="升級會員"
+        android:textSize="36dp"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:layout_margin="25dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:text="年付"
+        android:textSize="26dp"/>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="450dp"
+        android:layout_gravity="center">
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="350dp"
+            android:layout_height="400dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/background" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="60dp"
+            android:textSize="16dp"
+            android:text="升級專屬功能："/>
+
+        <ListView
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"/>
+
+
+    </FrameLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:text="升級"
+        android:textSize="36dp"
+        android:textColor="@color/white" />
+
+
+</LinearLayout>

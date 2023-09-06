@@ -5,13 +5,12 @@ import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.AdapterView
 import android.widget.Button
 import android.widget.ListView
 import android.widget.Spinner
 import android.widget.Toast
-import com.example.bodyboost.entity.Food
+import com.example.bodyboost.Model.Food
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import retrofit2.Call
 import retrofit2.Callback

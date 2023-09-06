@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:background="#ECEBEB"
+    android:orientation="vertical">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/sport_border" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/push_up"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp">
+                <TextView
+                    android:id="@+id/sport_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="伏地挺身"
+                    android:textSize="16dp"
+                    android:textColor="@color/Second"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="00:30"
+                    android:textColor="@color/Second"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+            <TextView
+                android:layout_width="30dp"
+                android:layout_height="20dp"
+                android:textSize="30px"
+                android:text="有氧"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:background="@color/white"
+                android:backgroundTint="#F0CF8F"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="240dp"/>
+            <TextView
+                android:layout_width="30dp"
+                android:layout_height="20dp"
+                android:textSize="30px"
+                android:text="計時"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:background="@color/white"
+                android:backgroundTint="#C5C0E7"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="280dp"/>
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:textSize="30px"
+            android:text="計時"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:background="@color/white"
+            android:backgroundTint="#B1DCF2"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="320dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:textSize="30px"
+            android:text="點擊前往運動"
+            android:textAlignment="center"
+            android:textColor="@color/Second"
+            android:layout_marginTop="60dp"
+            android:layout_marginLeft="280dp"/>
+    </FrameLayout>
+
+</LinearLayout>
