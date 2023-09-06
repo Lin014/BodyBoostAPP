@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/home"
         android:title="Home" />
@@ -15,6 +16,12 @@
     <item
         android:id="@+id/notification"
         android:title="Notification"
-        android:icon="@drawable/baseline_notifications_24"/>
+        android:icon="@drawable/baseline_notifications_24"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/upgrade"
+        android:title="Upgrade"
+        android:icon="@drawable/pro_text_1"
+        app:showAsAction="always"/>
 
 </menu>

@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
-import com.example.bodyboost.entity.Food
+import com.example.bodyboost.Model.Food
 
 class FoodListAdapter(private val context: Context, private val foodList: List<Food>) : BaseAdapter() {
     override fun getCount(): Int = foodList.size

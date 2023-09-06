@@ -2,16 +2,15 @@
     <!-- Base application theme. -->
     <style name="Theme.BodyBoost" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/Second</item>
-        <item name="colorPrimaryVariant">#AEC5EB</item>
-        <item name="colorOnPrimary">@color/Second</item>
-        <item name="android:iconTint">@color/white</item>
-        <item name="actionBarPopupTheme">@color/white</item>
-        <item name="android:text">@color/black</item>
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorPrimaryVariant">#9A9A9A</item>
+        <item name="colorOnPrimary">#000000</item>
+        <item name="android:iconTint">@color/black</item>
+        <item name="actionBarPopupTheme">@color/black</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/Lavender</item>
-        <item name="colorSecondaryVariant">@color/Lavender</item>
-        <item name="colorOnSecondary">@color/Second</item>
+        <item name="colorSecondary">#9A9A9A</item>
+        <item name="colorSecondaryVariant">#FFFFFF</item>
+        <item name="colorOnSecondary">#9A9A9A</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->

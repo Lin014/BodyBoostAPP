@@ -57,8 +57,9 @@
             android:layout_gravity="bottom"
             android:background="@color/Lavender"
             android:elevation="0dp"
-            app:labelVisibilityMode="labeled"
-            app:menu="@menu/bottom_menu" />
+            app:labelVisibilityMode="unlabeled"
+            app:menu="@menu/bottom_menu"
+            tools:ignore="VisualLintBottomNav" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </androidx.drawerlayout.widget.DrawerLayout>

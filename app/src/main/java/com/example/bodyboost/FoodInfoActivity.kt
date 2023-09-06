@@ -5,8 +5,8 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import com.example.bodyboost.entity.Food
-import com.example.bodyboost.entity.Store
+import com.example.bodyboost.Model.Food
+import com.example.bodyboost.Model.Store
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

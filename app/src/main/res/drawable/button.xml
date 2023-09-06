@@ -6,6 +6,6 @@
         android:width="3dp"
         android:color="@color/Lavender"/>
     <corners
-        android:radius="60dp"/>
+        android:radius="80dp"/>
 
 </shape>

@@ -13,11 +13,9 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
 import android.widget.Spinner
-import android.widget.TextView
 import android.widget.Toast
-import androidx.fragment.app.FragmentManager
-import com.example.bodyboost.entity.Food
-import com.example.bodyboost.entity.FoodType
+import com.example.bodyboost.Model.Food
+import com.example.bodyboost.Model.FoodType
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import retrofit2.Call
 import retrofit2.Callback
@@ -148,56 +146,4 @@ class FoodTypeFragment : Fragment() {
             show()
         }
     }
-
-    private fun goBackPage() {
-        val fragmentManager = requireActivity().supportFragmentManager
-        val transaction = fragmentManager.beginTransaction()
-        transaction.replace(R.id.fragment_container, RecordFragment())
-        transaction.addToBackStack(null)
-        transaction.commit()
-    }
-
-/*
-    private fun getFoodType() {
-        loadProgressDialog()
-        var call = retrofitAPI.getFoodType()
-        call.enqueue(object : Callback<List<FoodType>> {
-            override fun onResponse(call: Call<List<FoodType>>, response: Response<List<FoodType>>) {
-                foodTypeResponse(response)
-            }
-            override fun onFailure(call: Call<List<FoodType>>, t: Throwable) {
-                val toast = Toast(context)
-                toast.setText("請求失敗：" + t.message)
-                t.printStackTrace()
-                dismissProgressDialogAndShowToast(toast)
-                println(t.message)
-            }
-        })
-    }
-    private fun foodTypeResponse(response: Response<List<FoodType>>) {
-        val toast = Toast.makeText(context, "no message", Toast.LENGTH_SHORT)
-        if (response.isSuccessful) {
-            val foodType: List<FoodType>? = response.body()
-            if (foodType != null) {
-                when (response.code()) {
-                    200 -> {
-                        this.foodTypeList = foodType
-                        toast.setText("成功獲取食物類型")
-                        println(response.toString())
-                    }
-                    404 -> toast.setText("404 錯誤")
-                    else -> toast.setText("伺服器故障")
-                }
-            } else {
-                toast.setText("食物類型數據為空")
-                println(response.toString())
-            }
-        } else {
-            toast.setText("請求失敗：QQ " + response.message())
-            println(response.toString())
-        }
-        dismissProgressDialogAndShowToast(toast)
-    }
-
- */
 }
