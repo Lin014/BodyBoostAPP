@@ -1,5 +1,6 @@
 package com.example.bodyboost
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +16,7 @@ class FoodListAdapter(private val context: Context, private val foodList: List<F
 
     override fun getItemId(position: Int): Long = position.toLong()
 
+    @SuppressLint("ViewHolder")
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val inflater = LayoutInflater.from(context)
         val view = inflater.inflate(R.layout.list_item, parent, false)

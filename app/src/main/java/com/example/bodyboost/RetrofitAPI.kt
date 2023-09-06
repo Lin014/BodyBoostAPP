@@ -10,7 +10,6 @@ import com.example.bodyboost.Model.Users
 import com.example.bodyboost.Model.CustomFood
 import com.example.bodyboost.Model.DietRecord
 import com.example.bodyboost.Model.Food
-import com.example.bodyboost.Model.FoodType
 import com.example.bodyboost.Model.Store
 
 import retrofit2.Call
@@ -254,27 +253,8 @@ interface RetrofitAPI {
         @Query("page_size") page_size:Int
     ): Call<List<Food>>
 
-// ------food type----------------------------------------------------------------------------------
-//    @GET("api/foodtype/")
-//    fun getFoodType(): Call<List<FoodType>>
-//
-//    @POST("api/foodtype/add/")
-//    fun addFoodType( @Body addFoodType: FoodTypeData ): Call<FoodType>
-//    data class FoodTypeData(
-//        val type:String
-//    )
-//
-//    @DELETE("api/foodtype/delete/{id}")
-//    fun deleteFoodType( @Path("id") id:String ): Call<FoodType>
-//
-//    @PUT("api/foodtype/update/{id}")
-//    fun updateFoodType(
-//        @Path("id") id:String,
-//        @Body type: FoodType
-//    ): Call<Void>
-
 // ------search food--------------------------------------------------------------------------------
-    @GET("/api/searchfood/foodtype/{id}/{userId}")
+    @GET("api/searchfood/foodtype/{id}/{userId}")
     fun searchFoodById(
         @Path("id") id:String,
         @Path("userId") userId:String,
