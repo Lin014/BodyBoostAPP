@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class SearchFoodActivity : AppCompatActivity() {
+
+    private var optionId: Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search_food)
@@ -34,66 +36,16 @@ class SearchFoodActivity : AppCompatActivity() {
         val foodOptions: FloatingActionButton = findViewById(R.id.button_food_options)
         val back: Button = findViewById(R.id.back)
 
+        val clickableViews = listOf(grains, eggMeatFish, vegetables, fruits, dairy, beans, beverages,
+            alcohol, nuts, snacks, fastFood, condiment, dish,others)
+
         // setOnClickListener
-        custom.setOnClickListener {
-            replaceFragment(FoodTypeFragment())
-        }
-        grains.setOnClickListener {
-            replaceFragment(FoodTypeFragment())
-//            goFoodType("五榖澱粉類")
-        }
-        eggMeatFish.setOnClickListener {
-            replaceFragment(FoodTypeFragment())
-//            goFoodType("蛋肉魚類")
-        }
-        vegetables.setOnClickListener {
-            replaceFragment(FoodTypeFragment())
-//            goFoodType("蔬菜類")
-        }
-        fruits.setOnClickListener {
-            replaceFragment(FoodTypeFragment())
-            replaceFragment(FoodTypeFragment())
-//            goFoodType("水果類")
-        }
-        dairy.setOnClickListener {
-            replaceFragment(FoodTypeFragment())
-//            goFoodType("乳品類")
-        }
-        beans.setOnClickListener {
-            replaceFragment(FoodTypeFragment())
-//            goFoodType("豆類")
-        }
-        beverages.setOnClickListener {
-            replaceFragment(FoodTypeFragment())
-//            goFoodType("飲料類")
-        }
-        alcohol.setOnClickListener {
-            replaceFragment(FoodTypeFragment())
-//            goFoodType("酒類")
-        }
-        nuts.setOnClickListener {
-            replaceFragment(FoodTypeFragment())
-//            goFoodType("油脂與堅果類")
-        }
-        snacks.setOnClickListener {
-            replaceFragment(FoodTypeFragment())
-//            goFoodType("零食點心")
-        }
-        fastFood.setOnClickListener {
-            replaceFragment(FoodTypeFragment())
-//            goFoodType("速食類")
-        }
-        condiment.setOnClickListener {
-            replaceFragment(FoodTypeFragment())
-//            goFoodType("調味品")
-        }
-        dish.setOnClickListener {
-            replaceFragment(FoodTypeFragment())
-//            goFoodType("菜餚類")
-        }
-        others.setOnClickListener {
-            replaceFragment(FoodTypeFragment())
-//            goFoodType("其他類別")
+        custom.setOnClickListener { navigateToCustomFoodActivity() }
+        clickableViews.forEachIndexed { index, view ->
+            view.setOnClickListener {
+                optionId = index
+                navigateToFoodTypeActivity(optionId)
+            }
         }
         foodOptions.setOnClickListener {
             val intent = Intent(this, FoodOptionsActivity::class.java)
@@ -104,18 +56,14 @@ class SearchFoodActivity : AppCompatActivity() {
         }
     }
 
-    private fun replaceFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction().replace(R.id.fragment_container,fragment).commit()
+    private fun navigateToFoodTypeActivity(optionId: Int) {
+        val intent = Intent(this, FoodTypeActivity::class.java)
+//        intent.putExtra("optionId", optionId)
+        startActivity(intent)
     }
 
-//    private fun goFoodType(text: String) {
-//        //Toast.makeText(this.context, text, Toast.LENGTH_SHORT).show()
-//        val foodTypeFragment = FoodTypeFragment()
-//        val fragmentManager: FragmentManager = this.supportFragmentManager
-//        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
-//
-//        fragmentTransaction.addToBackStack(null)
-//        fragmentTransaction.replace(R.id.fragment_container, foodTypeFragment)
-//        fragmentTransaction.commit()
-//    }
+    private fun navigateToCustomFoodActivity() {
+        val intent = Intent(this, CustomFoodActivity::class.java)
+        startActivity(intent)
+    }
 }
