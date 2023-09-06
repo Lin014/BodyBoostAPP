@@ -51,7 +51,7 @@ class FoodTypeActivity : AppCompatActivity() {
 
     private fun displayFood(foodId: Int, userId: Int) {
         loadProgressDialog()
-        val call = retrofitAPI.searchFoodById("2", userId.toString(), 1, 50)
+        val call = retrofitAPI.searchFoodById(foodId.toString(), userId.toString(), 1, 50)
         call.enqueue(object : Callback<List<Food>> {
             override fun onResponse(call: Call<List<Food>>, response: Response<List<Food>>) {
                 displayFoodResponse(response)
@@ -71,10 +71,10 @@ class FoodTypeActivity : AppCompatActivity() {
             if (food != null) {
                 when (response.code()) {
                     200 -> {
-                        showToast("122")
                         this.foodList = food
                         foodListAdapter = FoodListAdapter(this, foodList!!)
-                        foodListView(foodListAdapter!!)
+                        listView.adapter = foodListAdapter
+//                        foodListView(foodListAdapter!!)
                     }
                     404 -> showToast("404 錯誤")
                     else -> showToast("伺服器故障")
