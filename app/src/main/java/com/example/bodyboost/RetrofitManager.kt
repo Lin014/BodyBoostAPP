@@ -20,7 +20,7 @@ object RetrofitManager {
                 .addInterceptor { chain ->
                     val original = chain.request()
                     val requestBuilder = original.newBuilder()
-                        .header("Authorization", Credentials.basic("userName", "password"))
+                        .header("Authorization", Credentials.basic("userName", "passpushword"))
                         .method(original.method(), original.body())
                     val request = requestBuilder.build()
                     chain.proceed(request)
