@@ -298,23 +298,17 @@ interface RetrofitAPI {
     ): Call<Void>
 
 // ------custom food--------------------------------------------------------------------------------
-//    @GET("api/customfood")
-//    fun getCustomFood(
-//        @Query("page") page:Int,
-//        @Query("page_size") page_size:Int
-//    ): Call<CustomFood>
-
     @POST("api/customfood/add")
-    fun addCustomFood( @Body addCustomFoodData: CustomFoodData )
+    fun addCustomFood( @Body addCustomFoodData: CustomFoodData ): Call<List<CustomFood>>
     data class CustomFoodData(
         val name: String,
         val calorie: Float,
         val size: Float,
         val unit: String,
-        val protein: Float,
-        val fat: Float,
-        val carb: Float,
-        val sodium: Float,
+        val protein: Float?,
+        val fat: Float?,
+        val carb: Float?,
+        val sodium: Float?,
         val modify: Boolean,
         val food_type_id: Int,
         val store_id: Int,
@@ -322,7 +316,7 @@ interface RetrofitAPI {
     )
 
     @DELETE("api/customfood/delete/{id}")
-    fun deleteCustomFood( @Path("id") id:String ): Call<CustomFood>
+    fun deleteCustomFood( @Path("id") id:String ): Call<List<CustomFood>>
 
     @PUT("api/customfood/update/{id}")
     fun updateCustomFood(
@@ -335,7 +329,7 @@ interface RetrofitAPI {
         @Path("id") id: String,
         @Query("page") page:Int,
         @Query("page_size") page_size:Int
-    ): Call<CustomFood>
+    ): Call<List<CustomFood>>
 
 // ------diet record--------------------------------------------------------------------------------
     @POST("api/dietrecord/add/")

@@ -10,6 +10,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="top"
         android:layout_marginTop="105dp"
+        android:background="@color/Yellow"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -22,6 +23,18 @@
             android:scrollbars="vertical"
             tools:listitem="@layout/list_item" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/noFood"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="105dp"
+        android:padding="10dp"
+        android:gravity="center"
+        android:text=""
+        android:textAlignment="center"
+        android:textColor="@color/TextColor"
+        android:textSize="25sp" />
 
     <Spinner
         android:id="@+id/spinner_type"
