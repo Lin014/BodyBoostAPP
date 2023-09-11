@@ -15,7 +15,7 @@ object RetrofitManager {
                 .addInterceptor { chain ->
                     val original = chain.request()
                     val requestBuilder = original.newBuilder()
-                        .header("Authorization", Credentials.basic("id", "password"))
+                        .header("Authorization", Credentials.basic("user", "user3114"))
                         .method(original.method(), original.body())
                     val request = requestBuilder.build()
                     chain.proceed(request)
@@ -23,7 +23,7 @@ object RetrofitManager {
                 .build()
 
             retrofitAPI = Retrofit.Builder()
-                .baseUrl("https://b27c-49-216-93-143.ngrok-free.app")
+                .baseUrl("https://3de1-59-125-76-248.ngrok-free.app")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(okHttpClient)
                 .build()

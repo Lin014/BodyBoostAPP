@@ -7,6 +7,10 @@ import com.example.bodyboost.Model.DailyBonus
 import com.example.bodyboost.Model.Member
 import com.example.bodyboost.Model.Profile
 import com.example.bodyboost.Model.Users
+import com.example.bodyboost.Model.CustomFood
+import com.example.bodyboost.Model.DietRecord
+import com.example.bodyboost.Model.Food
+import com.example.bodyboost.Model.Store
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -15,7 +19,7 @@ import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Path
 import retrofit2.http.Query
-
+import java.io.Serializable
 
 interface RetrofitAPI {
     //------------------------accuracy---------------------------
@@ -239,5 +243,130 @@ interface RetrofitAPI {
         val user_id: Int
 
     )
+
+// ------food---------------------------------------------------------------------------------------
+    @GET("api/food/")
+    fun getAllFood(
+        @Query("page") page:Int,
+        @Query("page_size") page_size:Int
+    ): Call<List<Food>>
+
+// ------search food--------------------------------------------------------------------------------
+    @GET("api/searchfood/foodtype/{id}/{userId}")
+    fun searchFoodById(
+        @Path("id") id:String,
+        @Path("userId") userId:String,
+        @Query("page") page:Int,
+        @Query("page_size") page_size: Int
+        ): Call<List<Food>>
+
+    @GET("api/searchfood/store/{id}/{userId}")
+    fun searchFoodByStore(
+        @Query("page") page:Int,
+        @Query("page_size") page_size: Int,
+        @Path("id") id:String,
+        @Path("userId") userId:String
+    ): Call<Food>
+
+    @GET("api/searchfood/word/{userId}")
+    fun searchFoodByWord(
+        @Query("name") name:String,
+        @Query("page") page:Int,
+        @Query("page_size") page_size: Int,
+        @Path("userId") userId:String
+    ): Call<Food>
+
+// ------store--------------------------------------------------------------------------------------
+    @GET("api/store/")
+    fun getAllStore(): Call<List<Store>>
+
+    @POST("api/store/add/")
+    fun addStore( @Body name: StoreData ): Call<Store>
+    data class StoreData(
+        val name:String
+    )
+
+    @DELETE("api/store/delete/{id}")
+    fun deleteStore( @Path("id") id:String ): Call<Store>
+
+    @PUT("api/store/update/{id}")
+    fun updateStore(
+        @Path("id") id:String,
+        @Body name: Store
+    ): Call<Void>
+
+// ------custom food--------------------------------------------------------------------------------
+    @POST("api/customfood/add")
+    fun addCustomFood( @Body addCustomFoodData: CustomFoodData ): Call<List<CustomFood>>
+    data class CustomFoodData(
+        val name: String,
+        val calorie: Float,
+        val size: Float,
+        val unit: String,
+        val protein: Float?,
+        val fat: Float?,
+        val carb: Float?,
+        val sodium: Float?,
+        val modify: Boolean,
+        val food_type_id: Int,
+        val store_id: Int,
+        val user_id: Int
+    ) : Serializable
+
+    @DELETE("api/customfood/delete/{id}")
+    fun deleteCustomFood( @Path("id") id:String ): Call<List<CustomFood>>
+
+    @PUT("api/customfood/update/{id}")
+    fun updateCustomFood(
+        @Path("id") id:String,
+        @Body updateCustomFood: CustomFoodData
+    ):Call<Void>
+
+    @GET("api/customfood/{id}")
+    fun getCustomFoodById(
+        @Path("id") id: String,
+        @Query("page") page:Int,
+        @Query("page_size") page_size:Int
+    ): Call<List<CustomFood>>
+
+// ------diet record--------------------------------------------------------------------------------
+    @POST("api/dietrecord/add/")
+    fun addDietRecord( @Body addDietRecordData: DietRecordData )
+    data class DietRecordData(
+        val date: String,
+        val label: String,
+        val serving_amount: Float,
+        val name: String,
+        val calorie: Float,
+        val size: Float,
+        val unit: String,
+        val protein: Float,
+        val fat: Float,
+        val carb: Float,
+        val sodium: Float,
+        val modify: Boolean,
+        val food_type_id: Int,
+        val store_id: Int,
+        val user_id: Int
+    )
+
+//    @POST("api/dietrecord/add/many")
+//    fun addManyDietRecord()
+
+    @DELETE("api/dietrecord/delete/{id}")
+    fun deleteDietRecord( @Path("id") id:String ): Call<DietRecord>
+
+    @PUT("api/dietrecord/update/{id}")
+    fun updateDietRecord(
+        @Path("id") id:String,
+        @Body updateDietRecordData: DietRecordData
+    ):Call<Void>
+
+    @GET("api/dietrecord/{id}")
+    fun getDietRecord(
+        @Path("id") id:String
+    ): Call<DietRecord>
+
+// -------------------------------------------------------------------------------------------------
 }
 

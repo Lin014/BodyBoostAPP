@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="390dp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
+    android:layout_marginBottom="55dp"
     android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,80 +15,22 @@
         tools:context=".ReportFragment">
 
         <ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="320dp"
-            android:layout_height="110dp"
-            android:src="@drawable/checkin"
-            android:layout_marginTop="30dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="輸入體重"
-            android:textColor="@color/TextColor"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView1"
-            app:layout_constraintEnd_toEndOf="@+id/imageView1"
-            app:layout_constraintHorizontal_bias="0.105"
-            app:layout_constraintStart_toStartOf="@+id/imageView1"
-            app:layout_constraintTop_toTopOf="@+id/imageView1"
-            app:layout_constraintVertical_bias="0.235" />
-
-        <EditText
-            android:id="@+id/editText_weight"
-            android:layout_width="176dp"
-            android:layout_height="48dp"
-            android:background="@drawable/custom_edittext"
-            android:ems="4"
-            android:hint="輸入體重(kg)"
-            android:inputType="numberDecimal"
-            android:text=""
-            app:layout_constraintBottom_toBottomOf="@+id/imageView1"
-            app:layout_constraintEnd_toEndOf="@id/imageView1"
-            app:layout_constraintHorizontal_bias="0.187"
-            app:layout_constraintStart_toStartOf="@+id/imageView1"
-            app:layout_constraintTop_toTopOf="@+id/imageView1"
-            app:layout_constraintVertical_bias="0.8" />
-
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="80dp"
-            android:layout_height="48dp"
-            android:layout_marginEnd="17dp"
-            android:background="@drawable/button"
-            android:text="完成"
-            android:textColor="#FFFFFFFF"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView1"
-            app:layout_constraintEnd_toEndOf="@+id/imageView1"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/editText_weight"
-            app:layout_constraintTop_toTopOf="@+id/imageView1"
-            app:layout_constraintVertical_bias="0.8" />
-
-        <ImageView
             android:id="@+id/imageView2"
             android:layout_width="320dp"
-            android:layout_height="250dp"
-            android:layout_marginTop="20dp"
+            android:layout_height="270dp"
+            android:layout_marginTop="30dp"
             android:src="@drawable/chart_background"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imageView1"
             tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/weight"
+            android:text="@string/weight_record"
             android:textColor="@color/TextColor"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -101,8 +44,8 @@
         <com.github.mikephil.charting.charts.LineChart
             android:id="@+id/lineChart_weight"
             android:layout_width="300dp"
-            android:layout_height="180dp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+            android:layout_height="190dp"
+            android:layout_marginTop="10dp"
             app:layout_constraintStart_toStartOf="@id/imageView2"
             app:layout_constraintEnd_toEndOf="@id/imageView2"
             app:layout_constraintTop_toBottomOf="@id/textView2" />
@@ -110,15 +53,14 @@
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="320dp"
-            android:layout_height="250dp"
-            android:layout_marginTop="20dp"
+            android:layout_height="270dp"
+            android:layout_marginTop="2dp"
             android:src="@drawable/chart_background"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView2"
-            tools:ignore="ContentDescription" />
+            tools:ignore="ContentDescription,ImageContrastCheck" />
 
         <TextView
             android:id="@+id/textView3"
@@ -138,12 +80,91 @@
         <com.github.mikephil.charting.charts.LineChart
             android:id="@+id/lineChart_calorie"
             android:layout_width="300dp"
-            android:layout_height="180dp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+            android:layout_height="190dp"
+            android:layout_marginTop="10dp"
             app:layout_constraintStart_toStartOf="@id/imageView3"
             app:layout_constraintEnd_toEndOf="@id/imageView3"
             app:layout_constraintTop_toBottomOf="@id/textView3" />
 
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="320dp"
+            android:layout_height="270dp"
+            android:layout_marginTop="2dp"
+            android:src="@drawable/chart_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageView3"
+            tools:ignore="ContentDescription"/>
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nutrient_content"
+            android:textColor="@color/TextColor"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+            app:layout_constraintEnd_toEndOf="@id/imageView4"
+            app:layout_constraintHorizontal_bias="0.105"
+            app:layout_constraintStart_toStartOf="@+id/imageView4"
+            app:layout_constraintTop_toTopOf="@+id/imageView4"
+            app:layout_constraintVertical_bias="0.1" />
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/pieChart_nutrient"
+            android:layout_width="300dp"
+            android:layout_height="190dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="@id/imageView4"
+            app:layout_constraintEnd_toEndOf="@id/imageView4"
+            app:layout_constraintTop_toBottomOf="@id/textView4" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="320dp"
+            android:layout_height="270dp"
+            android:layout_marginTop="2dp"
+            android:src="@drawable/chart_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageView4"
+            tools:ignore="ContentDescription"/>
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="飲水量"
+            android:textColor="@color/TextColor"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView5"
+            app:layout_constraintEnd_toEndOf="@id/imageView5"
+            app:layout_constraintHorizontal_bias="0.105"
+            app:layout_constraintStart_toStartOf="@+id/imageView5"
+            app:layout_constraintTop_toTopOf="@+id/imageView5"
+            app:layout_constraintVertical_bias="0.1" />
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/barChart_water"
+            android:layout_width="300dp"
+            android:layout_height="190dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="@id/imageView5"
+            app:layout_constraintEnd_toEndOf="@id/imageView5"
+            app:layout_constraintTop_toBottomOf="@id/textView5"  />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView5"
+            android:importantForAccessibility="no" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</FrameLayout>
+</ScrollView>
