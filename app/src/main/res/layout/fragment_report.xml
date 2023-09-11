@@ -11,8 +11,6 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:paddingHorizontal="20dp"
         tools:context=".ReportFragment">
 
         <ImageView
@@ -137,7 +135,7 @@
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="飲水量"
+            android:text="@string/water_intake"
             android:textColor="@color/TextColor"
             android:textSize="16sp"
             android:textStyle="bold"
