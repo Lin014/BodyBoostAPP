@@ -12,7 +12,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class AddCustomFoodActivity : AppCompatActivity() {
+class CustomFoodAddActivity : AppCompatActivity() {
 
     val currentUser = UserSingleton.user
     private var userId: Int = 0
@@ -30,7 +30,7 @@ class AddCustomFoodActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_custom_food)
+        setContentView(R.layout.activity_custom_food_add)
         if (currentUser != null) {
             userId = currentUser.id
         }

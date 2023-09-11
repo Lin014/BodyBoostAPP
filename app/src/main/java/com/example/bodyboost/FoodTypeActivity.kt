@@ -51,8 +51,8 @@ class FoodTypeActivity : AppCompatActivity() {
         noFood = findViewById(R.id.noFood)
 
         // set spinner
-        val spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, spinnerItems)
-        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        val spinnerAdapter = ArrayAdapter(this, R.drawable.spinner_back, spinnerItems)
+        spinnerAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
         spinner.adapter = spinnerAdapter
         if (receivedIntent != null) {
             optionId = receivedIntent.getIntExtra("optionId", 0)

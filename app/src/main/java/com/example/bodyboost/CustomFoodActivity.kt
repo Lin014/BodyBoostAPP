@@ -51,7 +51,7 @@ class CustomFoodActivity : AppCompatActivity() {
             navigateActivity(FoodOptionsActivity())
         }
         addCustomFood.setOnClickListener {
-            navigateActivity(AddCustomFoodActivity())
+            navigateActivity(CustomFoodAddActivity())
         }
 
         displayCustomFood()

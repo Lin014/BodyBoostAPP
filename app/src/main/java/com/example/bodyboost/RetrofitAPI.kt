@@ -20,6 +20,7 @@ import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Path
 import retrofit2.http.Query
+import java.io.Serializable
 
 
 interface RetrofitAPI {
@@ -313,7 +314,7 @@ interface RetrofitAPI {
         val food_type_id: Int,
         val store_id: Int,
         val user_id: Int
-    )
+    ) : Serializable
 
     @DELETE("api/customfood/delete/{id}")
     fun deleteCustomFood( @Path("id") id:String ): Call<List<CustomFood>>

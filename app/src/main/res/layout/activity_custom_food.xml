@@ -25,10 +25,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:divider="@android:color/transparent"
-                    android:dividerHeight="2sp"
+                    android:dividerHeight="10sp"
                     android:gravity="center_horizontal"
                     android:scrollbars="none"
-                    tools:listitem="@layout/list_item" />
+                    tools:listitem="@layout/list_item_custom_food" />
 
             </LinearLayout>
 
