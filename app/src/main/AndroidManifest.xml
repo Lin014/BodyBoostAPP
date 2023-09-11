@@ -31,10 +31,11 @@
             
         <activity
             android:name=".CustomFoodAddActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".FoodTypeActivity"
-            android:exported="false" />
+            android:exported="true" />
+        <activity
             android:name=".Register.Target3"
             android:exported="true" />
         <activity

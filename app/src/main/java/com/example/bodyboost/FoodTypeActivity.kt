@@ -1,10 +1,10 @@
 package com.example.bodyboost
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.ProgressDialog
 import android.content.Intent
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -14,6 +14,7 @@ import android.widget.ListView
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.bodyboost.Model.Food
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import retrofit2.Call
@@ -35,6 +36,7 @@ class FoodTypeActivity : AppCompatActivity() {
     private lateinit var noFood: TextView
     private var optionId: Int = 0
 
+    @SuppressLint("ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_food_type)
