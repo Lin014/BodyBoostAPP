@@ -11,7 +11,6 @@ import com.example.bodyboost.Model.CustomFood
 import com.example.bodyboost.Model.DietRecord
 import com.example.bodyboost.Model.Food
 import com.example.bodyboost.Model.Store
-
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -22,9 +21,7 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 import java.io.Serializable
 
-
 interface RetrofitAPI {
-
     //------------------------accuracy---------------------------
     @POST("api/accuracy/add/")
     fun addaccuracy(
@@ -372,3 +369,4 @@ interface RetrofitAPI {
 
 // -------------------------------------------------------------------------------------------------
 }
+

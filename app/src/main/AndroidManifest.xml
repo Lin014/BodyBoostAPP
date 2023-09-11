@@ -10,7 +10,8 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /> <!-- 添加 One Tap API 配置 -->
+
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <meta-data
         android:name="com.google.android.gms.identity.api.AuthzenApiKey"
         android:value="YOUR_ONE_TAP_API_KEY" /> <!-- 位置信息 -->
@@ -26,26 +27,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BodyBoost"
         tools:targetApi="31">
-        <activity
-            android:name=".CustomFoodUpdateActivity"
-            android:exported="false" />
+        
+            
         <activity
             android:name=".CustomFoodAddActivity"
             android:exported="false" />
         <activity
             android:name=".FoodTypeActivity"
             android:exported="false" />
-        <activity
-            android:name=".CustomFoodActivity"
-            android:exported="true" />
-        <activity
-            android:name=".FoodOptionsActivity"
-            android:exported="true" />
-        <activity
-            android:name=".FoodInfoActivity"
-            android:exported="true" />
-        <activity
-            android:name=".SearchFoodActivity"
+            android:name=".Register.Target3"
             android:exported="true" />
         <activity
             android:name=".Register.Target2"
@@ -87,11 +77,22 @@
             android:name=".DetailedActivity"
             android:exported="true" />
         <activity
+            android:name=".CustomFoodActivity"
+            android:exported="true" />
+        <activity
+            android:name=".FoodOptionsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".FoodInfoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SearchFoodActivity"
+            android:exported="true" />
+        <activity
             android:name=".WelcomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

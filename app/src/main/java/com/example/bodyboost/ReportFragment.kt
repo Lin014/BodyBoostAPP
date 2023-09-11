@@ -58,7 +58,6 @@ class ReportFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
     val rootView = inflater.inflate(R.layout.fragment_report, container, false)
 
         // findViewById
