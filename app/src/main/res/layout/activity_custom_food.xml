@@ -14,7 +14,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="80dp"
-                android:layout_marginTop="55dp"
+                android:layout_marginTop="60dp"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -23,7 +23,7 @@
                 <ListView
                     android:id="@+id/listView"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:divider="@android:color/transparent"
                     android:dividerHeight="10sp"
                     android:gravity="center_horizontal"

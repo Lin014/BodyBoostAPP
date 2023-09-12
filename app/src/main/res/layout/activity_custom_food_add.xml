@@ -66,12 +66,12 @@
         android:id="@+id/text_food_calorie"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
         android:layout_marginStart="20dp"
         android:text="熱量："
         android:textAlignment="textEnd"
         android:textColor="@color/TextColor"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/text_food_size"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_food_name" />
 
@@ -96,12 +96,12 @@
         android:id="@+id/text_food_size"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
         android:layout_marginStart="20dp"
         android:text="容量："
         android:textAlignment="textEnd"
         android:textColor="@color/TextColor"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/text_food_unit"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_food_calorie" />
 
@@ -126,12 +126,12 @@
         android:id="@+id/text_food_unit"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
         android:layout_marginStart="20dp"
         android:text="容量單位："
         android:textAlignment="textEnd"
         android:textColor="@color/TextColor"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/text_food_protein"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_food_size" />
 
@@ -169,12 +169,12 @@
         android:id="@+id/text_food_protein"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
         android:layout_marginStart="20dp"
         android:text="蛋白質："
         android:textAlignment="textEnd"
         android:textColor="@color/TextColor"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/text_food_fat"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_food_unit" />
 
@@ -199,12 +199,12 @@
         android:id="@+id/text_food_fat"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
         android:layout_marginStart="20dp"
         android:text="脂肪："
         android:textAlignment="textEnd"
         android:textColor="@color/TextColor"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/text_food_carb"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_food_protein" />
 
@@ -229,12 +229,12 @@
         android:id="@+id/text_food_carb"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
         android:layout_marginStart="20dp"
         android:text="碳水化合物："
         android:textAlignment="textEnd"
         android:textColor="@color/TextColor"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/text_food_sodium"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_food_fat" />
 
@@ -259,14 +259,14 @@
         android:id="@+id/text_food_sodium"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
+        android:layout_marginBottom="120dp"
         android:layout_marginStart="20dp"
         android:text="鈉："
         android:textAlignment="textEnd"
         android:textColor="@color/TextColor"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_food_carb" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/foodSodium"
@@ -289,7 +289,6 @@
         android:id="@+id/inputFinished"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
         android:background="@drawable/button"
         android:text="@string/complete"
         android:textColor="@color/white"
@@ -297,6 +296,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/foodSodium"
         tools:ignore="TextContrastCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

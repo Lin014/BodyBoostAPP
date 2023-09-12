@@ -64,10 +64,21 @@
     <string name="username">姓名</string>
     <string name="height">身高</string>
     <string name="gender">性別</string>
-    <string name="g">g</string>
-    <string name="ml">ml</string>
+    <string name="g" />
+    <string name="ml" />
     <string name="not_required_items">非必填</string>
     <string name="required_items">必填</string>
     <string name="complete">完成</string>
     <string name="add_custom_food">新增自訂食物</string>
+    <string name="water_intake">飲水量</string>
+    <string name="carb">碳水化合物</string>
+    <string name="g_chinese">克</string>
+    <string name="calorie">熱量</string>
+    <string name="kcal">大卡</string>
+    <string name="protein">蛋白質</string>
+    <string name="fat">脂肪</string>
+    <string name="sodium">鈉</string>
+    <string name="mg_chinese">毫克</string>
+    <string name="add">新增</string>
+    <string name="back_chinese">返回</string>
 </resources>
