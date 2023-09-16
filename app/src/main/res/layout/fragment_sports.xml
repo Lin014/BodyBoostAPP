@@ -9,35 +9,37 @@
     android:fillViewport="true">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:orientation="vertical"
-        tools:context=".SportFragment">
+        tools:context=".sport.SportFragment"
+        android:padding="20dp">
 
         <EditText
             android:id="@+id/editText"
-            android:layout_width="320dp"
+            android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:background="@drawable/custom_edittext"
-            android:backgroundTint="@color/Yellow"
-            android:hint="@string/search"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
-            android:padding="10dp"
-            android:textColor="@color/TextColor"
             android:autofillHints="auto"
+            android:background="@drawable/custom_edittext"
+            android:backgroundTint="@color/Yellow"
+            android:drawableEnd="@drawable/baseline_search_24"
+            android:drawableTint="@color/Second"
+            android:hint="@string/search"
             android:inputType="text"
-            android:drawableRight="@drawable/baseline_search_24"
-            android:drawableTint="@color/Second"/>
+            android:padding="10dp"
+            android:textColor="@color/TextColor" />
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp">
 
             <ImageView
                 android:id="@+id/imageView4"
-                android:layout_width="320dp"
+                android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:src="@drawable/sport"/>
 
@@ -45,21 +47,22 @@
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:text="近期運動"
                 android:textColor="@color/TextColor"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
 
         </FrameLayout>
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp">
             <ImageView
                 android:id="@+id/imageView5"
-                android:layout_width="320dp"
+                android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:src="@drawable/sport"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -74,29 +77,29 @@
                 android:layout_height="wrap_content"
                 android:text="我的運動組合"
                 android:layout_marginTop="20dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
                 android:textColor="@color/TextColor"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 android:textStyle="bold"/>
 
             <ImageView
                 android:id="@+id/imageView6"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_margin="15dp"
-                android:layout_gravity="right"
+                android:layout_margin="20dp"
+                android:layout_gravity="end"
                 android:src="@drawable/baseline_add_24"
                 app:tint="@color/Second" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:layout_gravity="right"
+                android:layout_gravity="end"
                 android:layout_marginTop="140dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/button"
                 android:text="查看更多"
-                android:textColor="@color/white"
-                android:background="@drawable/button"/>
+                android:textColor="@color/white" />
         </FrameLayout>
 
         <TextView
@@ -104,31 +107,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="所有運動"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="20dp"
             android:textColor="@color/TextColor"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:textStyle="bold"/>
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <ImageButton
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_marginTop="100dp"
-                android:backgroundTint="@color/white"
-                android:src="@drawable/sport_border"
-                tools:ignore="SpeakableTextPresentCheck" />
-
-            <ImageButton
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_marginTop="200dp"
-                android:backgroundTint="@color/white"
-                android:src="@drawable/sport_border"
-                tools:ignore="SpeakableTextPresentCheck" />
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp">
 
             <ImageButton
                 android:layout_width="match_parent"
