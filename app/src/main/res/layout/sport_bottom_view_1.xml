@@ -20,9 +20,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="近期運動"
-            android:textColor="@color/TextColor"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textColor="@color/Second"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="20dp"/>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/last_sport_list_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:nestedScrollingEnabled="false"
+                android:orientation="horizontal"/>
+        </androidx.core.widget.NestedScrollView>
 
     </LinearLayout>
 
@@ -45,9 +57,9 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:text="我的運動組合"
-                android:textColor="@color/TextColor"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textColor="@color/Second"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
 
             <ImageView
                 android:id="@+id/imageView6"
@@ -58,6 +70,17 @@
                 app:tint="@color/Second" />
         </RelativeLayout>
 
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/combo_sport_list_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:nestedScrollingEnabled="false"
+                android:orientation="horizontal"/>
+        </androidx.core.widget.NestedScrollView>
+
     </LinearLayout>
 
     <TextView
@@ -65,26 +88,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="所有運動"
-        android:textColor="@color/TextColor"
-        android:textSize="16sp"
+        android:textColor="@color/Second"
+        android:textSize="20sp"
         android:textStyle="bold"
         android:layout_marginBottom="20dp"/>
 
-    <FrameLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp">
-
-        <ImageButton
+        android:layout_height="match_parent">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/sportRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:background="@drawable/sport_border"
-            android:contentDescription="TODO" />
-
-    </FrameLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:nestedScrollingEnabled="false" />
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>
