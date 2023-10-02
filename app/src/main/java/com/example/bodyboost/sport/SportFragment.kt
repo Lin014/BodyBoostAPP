@@ -1,24 +1,25 @@
 package com.example.bodyboost.sport
 
-import android.content.Context
 import android.os.Bundle
-import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.FrameLayout
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bodyboost.R
+import com.example.bodyboost.RetrofitManager
 import java.util.ArrayList
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class SportFragment : Fragment() {
+    private val retrofitAPI = RetrofitManager.getInstance()
 
     private lateinit var bottomView1: View
 
@@ -31,7 +32,7 @@ class SportFragment : Fragment() {
     private lateinit var comboSportListView: RecyclerView
 
     private lateinit var sportItemAdapter: SportItemAdapter
-    private var sportItemList = ArrayList<Sport>()
+    private var sportItemList: List<Sport> = ArrayList<Sport>()
 
     private var lastSportList = ArrayList<SportHorizontalItem>()
     private lateinit var lastSportListAdapter: SportHorizontalListAdapter
@@ -64,7 +65,7 @@ class SportFragment : Fragment() {
         addSportItemData()
         addLastSportItemData()
         addComboSportItemData()
-        updateSportList(bottomView1)
+        updateSportList(bottomView1, sportItemList)
         updateLastSportList(bottomView1, lastSportList)
         updateComboSportList(bottomView1, comboSportList)
 
@@ -132,11 +133,11 @@ class SportFragment : Fragment() {
         })
     }
 
-    private fun updateSportList(bottomView1: View) {
+    private fun updateSportList(bottomView1: View, sportList: List<Sport>) {
         sportItemListView = bottomView1.findViewById(R.id.sportRecyclerView)
         sportItemListView.setHasFixedSize(true)
         sportItemListView.layoutManager = LinearLayoutManager(bottomView1.context)
-        sportItemAdapter = SportItemAdapter(sportItemList)
+        sportItemAdapter = SportItemAdapter(sportList)
         sportItemListView.adapter = sportItemAdapter
 
         sportItemAdapter.setOnItemClickListener(object : SportItemAdapter.OnItemClickListener {
@@ -216,57 +217,23 @@ class SportFragment : Fragment() {
     }
 
     private fun addSportItemData() {
-        sportItemList.add(Sport(
-            id = 1,
-            name = "開合跳",
-            description = "一開一合，身體呈現大字開合跳躍動作",
-            default_time = 30F,
-            interval = 1F,
-            is_count = true,
-            met = 3F,
-            type = "aerobics",
-            animation = Sport.Animation(
-                id = 1,
-                name = "Lisa",
-                animation = "https://storage.googleapis.com/bodyboost-bucket/animation_video/Lisa-jumping-jack-light-unscreen.gif",
-                image = "https://storage.googleapis.com/bodyboost-bucket/animation_img/Lisa-jumping-jack-light-image.gif",
-                sport_id = 1
-            )
-        ))
-        sportItemList.add(Sport(
-            id = 2,
-            name = "伏地挺身",
-            description = "手掌撐住地板，腳尖著地，身體向下時手臂彎曲，上下來回算一下。",
-            default_time = 20F,
-            interval = 2F,
-            is_count = true,
-            met = 3F,
-            type = "anaerobic",
-            animation = Sport.Animation(
-                id = 2,
-                name = "Lisa",
-                animation = "https://storage.googleapis.com/bodyboost-bucket/animation_video/Lisa-push-up-light-unscreen.gif",
-                image = "https://storage.googleapis.com/bodyboost-bucket/animation_img/Lisa-push-up-light-image.gif",
-                sport_id = 2
-            )
-        ))
-        sportItemList.add(Sport(
-            id = 3,
-            name = "手肘碰膝蓋",
-            description = "一左一右腳彎曲抬起碰到手肘。",
-            default_time = 20F,
-            interval = 2F,
-            is_count = true,
-            met = 3F,
-            type = "anaerobic",
-            animation = Sport.Animation(
-                id = 3,
-                name = "Lisa",
-                animation = "https://storage.googleapis.com/bodyboost-bucket/animation_video/Lisa-elbow-knee-touch2-light-unscreen.gif",
-                image = "https://storage.googleapis.com/bodyboost-bucket/animation_img/Lisa-elbow-knee-touch2-light-image.gif",
-                sport_id = 3
-            )
-        ))
+        val call: Call<List<Sport>> = retrofitAPI.getSportByUserId(2, 1, 20)
+        call.enqueue(object: Callback<List<Sport>> {
+            override fun onResponse(call: Call<List<Sport>>, response: Response<List<Sport>>) {
+                if (response.code() == 200) {
+                    Toast.makeText(view.context, "success message", Toast.LENGTH_SHORT).show()
+                    sportItemList = response.body()!!
+                    sportItemAdapter = SportItemAdapter(sportItemList)
+                    sportItemListView.adapter = sportItemAdapter
+                } else if (response.code() == 404) {
+                    Toast.makeText(view.context, "not found message", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<List<Sport>>, t: Throwable) {
+                Toast.makeText(view.context, "error message", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
     public fun setSearchBarEditTextClearFocus() {
@@ -285,7 +252,7 @@ class SportFragment : Fragment() {
     private fun goneSportCancelButton() {
         sportCancelButton.visibility = View.GONE
 
-        updateSportList(bottomView1)
+        updateSportList(bottomView1, sportItemList)
         updateLastSportList(bottomView1, lastSportList)
         updateComboSportList(bottomView1, comboSportList)
 
